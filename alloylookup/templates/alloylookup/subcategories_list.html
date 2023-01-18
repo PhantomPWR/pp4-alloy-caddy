@@ -1,0 +1,16 @@
+{% extends 'alloylookup/base.html' %}
+
+{% block content %} 
+<body>
+    
+    {% for subcategory in subcategories %}
+
+    <div>
+        <h5>{{ subcategory.subcategory_id }}</h5>
+        <h6>{{ subcategory.subcategory_name }}</h6>
+    </div>
+
+    {% endfor %}
+
+</body>
+{% endblock %}

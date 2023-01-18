@@ -1,0 +1,141 @@
+{% extends 'alloylookup/base.html' %}
+
+{% block content %} 
+<body>
+    
+    {% for alloy in alloys %}
+
+    <div>
+        <h5>Alloy Code: {{ alloy.alloy_code }}</h5>
+        <h6>Alloy Country Code: {{ alloy.country_code }}</h6>
+        <h6>Primary Footnote: {{ alloy.primary_footnote_id }}</h6>
+        <h6>Secondary Footnote: {{ alloy.secondary_footnote_id }}</h6>
+    </div>
+
+    <div>
+        <h3>Alloy Composition</h3>
+        <h5>Elements</h5>
+            <h6>si_min: {{ alloy.si_min }}</h6>
+            <h6>si_max: {{ alloy.si_max }}</h6>
+            <h6>fe_min: {{ alloy.fe_min }}</h6>
+            <h6>fe_max: {{ alloy.fe_max }}</h6>
+            <h6>cu_min: {{ alloy.cu_min }}</h6>
+            <h6>cu_max: {{ alloy.cu_max }}</h6>
+            <h6>mn_min: {{ alloy.mn_min }}</h6>
+            <h6>mn_max: {{ alloy.mn_max }}</h6>
+            <h6>mg_min: {{ alloy.mg_min }}</h6>
+            <h6>mg_max: {{ alloy.mg_max }}</h6>
+            <h6>cr_min: {{ alloy.cr_min }}</h6>
+            <h6>cr_max: {{ alloy.cr_max }}</h6>
+            <h6>ni_min: {{ alloy.ni_min }}</h6>
+            <h6>ni_max: {{ alloy.ni_max }}</h6>
+            <h6>zn_min: {{ alloy.zn_min }}</h6>
+            <h6>zn_max: {{ alloy.zn_max }}</h6>
+            <h6>ti_min: {{ alloy.ti_min }}</h6>
+            <h6>ti_max: {{ alloy.ti_max }}</h6>
+            <h6>ga_min: {{ alloy.ga_min }}</h6>
+            <h6>ga_max: {{ alloy.ga_max }}</h6>
+            <h6>v_min: {{ alloy.v_min }}</h6>
+            <h6>v_max: {{ alloy.v_max }}</h6>
+            <h6>mo_min: {{ alloy.mo_min }} </h6>
+            <h6>mo_max: {{ alloy.mo_max }} </h6>
+            <h6>c_min: {{ alloy.c_min }}</h6>
+            <h6>c_max: {{ alloy.c_max }}</h6>
+            <h6>al_min: {{ alloy.al_min }}</h6>
+            <h6>al_max: {{ alloy.al_max }}</h6>
+            <h6>cb_min: {{ alloy.cb_min }}</h6>
+            <h6>cb_max: {{ alloy.cb_max }}</h6>
+            <h6>co_min: {{ alloy.co_min }}</h6>
+            <h6>co_max: {{ alloy.co_max }}</h6>
+            <h6>w_min: {{ alloy.w_min }}</h6>
+            <h6>w_max: {{ alloy.w_max }}</h6>
+            <h6>zr_min: {{ alloy.zr_min }} </h6>
+            <h6>zr_max: {{ alloy.zr_max }} </h6>
+            <h6>ag_min: {{ alloy.ag_min }} </h6>
+            <h6>ag_max: {{ alloy.ag_max }} </h6>
+            <h6>s_min: {{ alloy.s_min }}</h6>
+            <h6>s_max: {{ alloy.s_max }}</h6>
+            <h6>be_min: {{ alloy.be_min }}</h6>
+            <h6>be_max: {{ alloy.be_max }}</h6>
+            <h6>ta_min: {{ alloy.ta_min }}</h6>
+            <h6>ta_max: {{ alloy.ta_max }}</h6>
+            <h6>sn_min: {{ alloy.sn_min }}</h6>
+            <h6>sn_max: {{ alloy.sn_max }}</h6>
+            <h6>re_min: {{ alloy.re_min }}</h6>
+            <h6>re_max: {{ alloy.re_max }}</h6>
+            <h6>bi_min: {{ alloy.bi_min }}</h6>
+            <h6>bi_max: {{ alloy.bi_max }}</h6>
+            <h6>b_min: {{ alloy.b_min }}</h6>
+            <h6>b_max: {{ alloy.b_max }}</h6>
+            <h6>o_min: {{ alloy.o_min }}</h6>
+            <h6>o_max: {{ alloy.o_max }}</h6>
+            <h6>as_min: {{ alloy.as_min }}</h6>
+            <h6>as_max: {{ alloy.as_max }}</h6>
+            <h6>li_min: {{ alloy.li_min }}</h6>
+            <h6>li_max: {{ alloy.li_max }}</h6>
+            <h6>ca_min: {{ alloy.ca_min }}</h6>
+            <h6>ca_max: {{ alloy.ca_max }}</h6>
+            <h6>cd_min: {{ alloy.cd_min }}</h6>
+            <h6>cd_max: {{ alloy.cd_max }}</h6>
+            <h6>ce_min: {{ alloy.ce_min }}</h6>
+            <h6>ce_max: {{ alloy.ce_max }}</h6>
+            <h6>h_min: {{ alloy.h_min }}</h6>
+            <h6>h_max: {{ alloy.h_max }}</h6>
+            <h6>hf_min: {{ alloy.hf_min }}</h6>
+            <h6>hf_max: {{ alloy.hf_max }}</h6>
+            <h6>la_min: {{ alloy.la_min }}</h6>
+            <h6>la_max: {{ alloy.la_max }}</h6>
+            <h6>n_min: {{ alloy.n_min }}</h6>
+            <h6>n_max: {{ alloy.n_max }}</h6>
+            <h6>nb_min: {{ alloy.nb_min }} </h6>
+            <h6>nb_max: {{ alloy.nb_max }} </h6>
+            <h6>sb_min: {{ alloy.sb_min }} </h6>
+            <h6>sb_max: {{ alloy.sb_max }} </h6>
+            <h6>se_min: {{ alloy.se_min }} </h6>
+            <h6>se_max: {{ alloy.se_max }} </h6>
+            <h6>sr_min: {{ alloy.sr_min }} </h6>
+            <h6>sr_max: {{ alloy.sr_max }} </h6>
+            <h6>su_min: {{ alloy.su_min }} </h6>
+            <h6>su_max: {{ alloy.su_max }} </h6>
+            <h6>rr_min: {{ alloy.rr_min }} </h6>
+            <h6>rr_max: {{ alloy.rr_max }} </h6>
+            <h6>te_min: {{ alloy.te_min }} </h6>
+            <h6>te_max: {{ alloy.te_max }} </h6>
+            <h6>y_min: {{ alloy.y_min }}</h6>
+            <h6>y_max: {{ alloy.y_max }}</h6>
+            <h6>ru_min: {{ alloy.ru_min }} </h6>
+            <h6>ru_max: {{ alloy.ru_max }} </h6>
+            <h6>pb_min: {{ alloy.pb_min }} </h6>
+            <h6>pb_max: {{ alloy.pb_max }} </h6>
+            <h6>p_min: {{ alloy.p_min }}</h6>
+            <h6>p_max: {{ alloy.p_max }}</h6>
+
+        <h5>Compounds</h5>
+        <h6>wc_min: {{ alloy.wc_min }} </h6>
+        <h6>wc_max: {{ alloy.wc_max }} </h6>
+        <h6>n2_min: {{ alloy.n2_min }} </h6>
+        <h6>n2_max: {{ alloy.n2_max }} </h6>
+        <h6>tac_min: {{ alloy.tac_min }} </h6>
+        <h6>tac_max: {{ alloy.tac_max }} </h6>
+        <h6>th02_min: {{ alloy.th02_min }} </h6>
+        <h6>th02_max: {{ alloy.th02_max }} </h6>
+        <h6>tic_min: {{ alloy.tic_min }} </h6>
+        <h6>tic_max: {{ alloy.tic_max }} </h6>
+        <h6>so_min: {{ alloy.so_min }} </h6>
+        <h6>so_max: {{ alloy.so_max }} </h6>
+
+        <h6>Others Each: {{ alloy.others_each_id }} {{ alloy.others_each }}</h6>
+        <h6>Others Total: {{ alloy.others_total_id }} {{ alloy.others_total }}</h6>
+        <h6>Special Note: {{ alloy.special_note_id }} {{ alloy.special_note }}</h6>
+    </div>
+
+
+
+
+    {% endfor %}
+
+</body>
+{% endblock %}
+
+
+
