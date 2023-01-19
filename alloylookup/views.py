@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Country, Footnote, Subcategory, Category, AlloyDescription, Alloy
+from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Category, AlloyDescription, Alloy
 
 # Create your views here.
 
@@ -15,15 +15,26 @@ def get_countries_list(request):
     return render(request, 'alloylookup/countries_list.html', context)
 
 
-def get_footnotes_list(request):
+def get_primary_footnotes_list(request):
     """
-    Retrieves the footnotes_list template.
+    Retrieves the primary_footnotes_list template.
     """
-    footnotes = Footnote.objects.all()
+    primary_footnotes = PrimaryFootnote.objects.all()
     context = {
-        "footnotes": footnotes
+        "primary_footnotes": primary_footnotes
     }
-    return render(request, 'alloylookup/footnotes_list.html', context)
+    return render(request, 'alloylookup/primary_footnotes_list.html', context)
+
+
+def get_secondary_footnotes_list(request):
+    """
+    Retrieves the secondary_footnotes_list template.
+    """
+    secondary_footnotes = SecondaryFootnote.objects.all()
+    context = {
+        "secondary_footnotes": secondary_footnotes
+    }
+    return render(request, 'alloylookup/secondary_footnotes_list.html', context)
 
 
 def get_subcategories_list(request):
@@ -65,6 +76,6 @@ def get_alloy_list(request):
     """
     alloys = Alloy.objects.all()
     context = {
-        "alloy": alloy
+        "alloys": alloys
     }
     return render(request, 'alloylookup/alloy_list.html', context)

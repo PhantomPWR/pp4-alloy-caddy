@@ -1,0 +1,16 @@
+{% extends 'alloylookup/base.html' %}
+
+{% block content %} 
+<body>
+    
+    {% for primary_footnote in primary_footnotes %}
+
+    <div>
+        <h5>{{ primary_footnote.footnote_id }}</h5>
+        <h6>{{ primary_footnote.footnote }}</h6>
+    </div>
+
+    {% endfor %}
+
+</body>
+{% endblock %}

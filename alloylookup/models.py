@@ -15,9 +15,20 @@ class Country(models.Model):
         return str(self.country_name)
 
 
-class Footnote(models.Model):
+class PrimaryFootnote(models.Model):
     """
-    Model for Footnotes.
+    Model for Primary Footnotes.
+    """
+    footnote_id = models.IntegerField(null=False, blank=False)
+    footnote = models.CharField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return str(self.footnote)
+
+
+class SecondaryFootnote(models.Model):
+    """
+    Model for Secondary Footnotes.
     """
     footnote_id = models.IntegerField(null=False, blank=False)
     footnote = models.CharField(max_length=300, null=False, blank=False)
@@ -79,17 +90,16 @@ class Alloy(models.Model):
         blank=True
     )
     primary_footnote_id = models.ForeignKey(
-        Footnote,
+        PrimaryFootnote,
         on_delete=models.CASCADE,
         null=True,
         blank=True
     )
     secondary_footnote_id = models.ForeignKey(
-        Footnote,
+        SecondaryFootnote,
         on_delete=models.CASCADE,
         null=True,
-        blank=True,
-        limit_choices_to={Footnote.footnote_id}
+        blank=True
     )
 
     # Elements
@@ -202,29 +212,8 @@ class Alloy(models.Model):
     so_min = models.CharField(max_length=300, null=True, blank=True)
     so_max = models.CharField(max_length=300, null=True, blank=True)
 
-    # others_each_id = models.ForeignKey(
-    #     AlloyDescription,
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True,
-    #     limit_choices_to={AlloyDescription.alloy_code}
-    # )
     others_each = models.CharField(max_length=300, null=True, blank=True)
-    # others_total_id = models.ForeignKey(
-    #     AlloyDescription,
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True,
-    #     limit_choices_to={AlloyDescription.alloy_code}
-    # )
     others_total = models.CharField(max_length=300, null=True, blank=True)
-    # special_note_id = models.ForeignKey(
-    #     AlloyDescription,
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True,
-    #     limit_choices_to={AlloyDescription.alloy_code}
-    # )
     special_note = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):

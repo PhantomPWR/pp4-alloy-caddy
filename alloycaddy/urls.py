@@ -20,7 +20,8 @@ from alloylookup import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('countries/', views.get_countries_list, name='get_countries_list'),
-    path('footnotes/', views.get_footnotes_list, name='get_footnotes_list'),
+    path('primary_footnotes/', views.get_primary_footnotes_list, name='get_primary_footnotes_list'),
+    path('secondary_footnotes/', views.get_secondary_footnotes_list, name='get_secondary_footnotes_list'),
     path('subcategories/', views.get_subcategories_list, name='get_subcategories_list'),
     path('categories/', views.get_categories_list, name='get_categories_list'),
     path('alloydescriptions/', views.get_alloy_descriptions_list, name='get_alloy_descriptions_list'),
