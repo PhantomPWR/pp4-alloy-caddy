@@ -79,6 +79,7 @@ class Alloy(models.Model):
     """
     alloy_code = models.ForeignKey(
         AlloyDescription,
+        # AlloyDescription.objects.filter(alloy_code=alloy_code),
         on_delete=models.CASCADE,
         null=True,
         blank=True
