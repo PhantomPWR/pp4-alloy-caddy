@@ -8,8 +8,15 @@ class Country(models.Model):
     """
     Model for Countries.
     """
-    country_id = models.IntegerField(null=False, blank=False)
-    country_name = models.CharField(max_length=150, null=False, blank=False)
+    country_id = models.IntegerField(
+        null=False,
+        blank=False
+    )
+    country_name = models.CharField(
+        max_length=150,
+        null=False,
+        blank=False
+    )
 
     def __str__(self):
         return str(self.country_name)
@@ -19,8 +26,15 @@ class PrimaryFootnote(models.Model):
     """
     Model for Primary Footnotes.
     """
-    footnote_id = models.IntegerField(null=False, blank=False)
-    footnote = models.CharField(max_length=300, null=False, blank=False)
+    footnote_id = models.IntegerField(
+        null=False,
+        blank=False
+    )
+    footnote = models.CharField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
 
     def __str__(self):
         return str(self.footnote)
@@ -30,8 +44,15 @@ class SecondaryFootnote(models.Model):
     """
     Model for Secondary Footnotes.
     """
-    footnote_id = models.IntegerField(null=False, blank=False)
-    footnote = models.CharField(max_length=300, null=False, blank=False)
+    footnote_id = models.IntegerField(
+        null=False,
+        blank=False
+    )
+    footnote = models.CharField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
 
     def __str__(self):
         return str(self.footnote)
@@ -41,8 +62,15 @@ class Subcategory(models.Model):
     """
     Model for Sub-categories.
     """
-    subcategory_id = models.IntegerField(null=False, blank=False)
-    subcategory_name = models.CharField(max_length=300, null=False, blank=False)
+    subcategory_id = models.IntegerField(
+        null=False,
+        blank=False
+    )
+    subcategory_name = models.CharField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
 
     def __str__(self):
         return str(self.subcategory_name)
@@ -52,9 +80,21 @@ class Category(models.Model):
     """
     Model for Categories.
     """
-    category_id = models.IntegerField(null=False, blank=False)
-    category_name = models.CharField(max_length=300, null=False, blank=False)
-    subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE, null=True, blank=True)
+    category_id = models.IntegerField(
+        null=False,
+        blank=False
+    )
+    category_name = models.CharField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
+    subcategory = models.ForeignKey(
+        Subcategory,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return str(self.category_name)
@@ -64,10 +104,28 @@ class AlloyDescription(models.Model):
     """
     Model for Descriptions.
     """
-    alloy_code = models.IntegerField(null=False, blank=False, primary_key=True)
-    alloy_description = models.CharField(max_length=300, null=False, blank=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE, null=True, blank=True)
+    alloy_code = models.IntegerField(
+        null=False,
+        blank=False,
+        primary_key=True
+    )
+    alloy_description = models.CharField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+    subcategory = models.ForeignKey(
+        Subcategory,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return str(self.alloy_description)
@@ -79,7 +137,6 @@ class Alloy(models.Model):
     """
     alloy_code = models.ForeignKey(
         AlloyDescription,
-        # AlloyDescription.objects.filter(alloy_code=alloy_code),
         on_delete=models.CASCADE,
         null=True,
         blank=True
