@@ -24,6 +24,6 @@ urlpatterns = [
     path('secondary_footnotes/', views.get_secondary_footnotes_list, name='get_secondary_footnotes_list'),
     path('subcategories/', views.get_subcategories_list, name='get_subcategories_list'),
     path('categories/', views.get_categories_list, name='get_categories_list'),
-    path('alloydescriptions/', views.get_alloy_descriptions_list, name='get_alloy_descriptions_list'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
+    path('', views.get_alloy_list, name='get_alloy_list'),
 ]

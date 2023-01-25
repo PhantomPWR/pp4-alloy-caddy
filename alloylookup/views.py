@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Category, AlloyDescription, Alloy
+from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Category, Alloy
 
 # Create your views here.
 
@@ -57,17 +57,6 @@ def get_categories_list(request):
         "categories": categories
     }
     return render(request, 'alloylookup/categories_list.html', context)
-
-
-def get_alloy_descriptions_list(request):
-    """
-    Retrieves the alloy_descriptions_list template.
-    """
-    alloy_descriptions = AlloyDescription.objects.all()
-    context = {
-        "alloy_descriptions": alloy_descriptions
-    }
-    return render(request, 'alloylookup/alloy_descriptions_list.html', context)
 
 
 def get_alloy_list(request):

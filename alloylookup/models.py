@@ -100,46 +100,14 @@ class Category(models.Model):
         return str(self.category_name)
 
 
-class AlloyDescription(models.Model):
-    """
-    Model for Descriptions.
-    """
-    alloy_code = models.IntegerField(
-        null=False,
-        blank=False,
-        primary_key=True
-    )
-    alloy_description = models.CharField(
-        max_length=300,
-        null=False,
-        blank=False
-    )
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )
-    subcategory = models.ForeignKey(
-        Subcategory,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )
-
-    def __str__(self):
-        return str(self.alloy_description)
-
-
 class Alloy(models.Model):
     """
     Model for Alloys.
     """
-    alloy_code = models.ForeignKey(
-        AlloyDescription,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
+    alloy_code = models.IntegerField(
+        null=False,
+        blank=False,
+        unique=True
     )
     country_code = models.ForeignKey(
         Country,
@@ -155,6 +123,23 @@ class Alloy(models.Model):
     )
     secondary_footnote_id = models.ForeignKey(
         SecondaryFootnote,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+    alloy_description = models.CharField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+    subcategory = models.ForeignKey(
+        Subcategory,
         on_delete=models.CASCADE,
         null=True,
         blank=True
