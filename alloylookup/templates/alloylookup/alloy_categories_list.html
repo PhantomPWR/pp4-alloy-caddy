@@ -2,16 +2,33 @@
 
 {% block content %} 
 <body>
-    
-    {% for category in categories %}
+    <div class="container">
+        <h1>Alloy Categories</h1>
+        
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">AlloyCode</th>
+                    <th scope="col">Alloy Description</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Sub-Category</th>
+                    <!-- <th scope="col">Others Each</th>
+                    <th scope="col">Others Total</th>
+                    <th scope="col">Special Note</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}    
+                    <tr>
+                        <td>{{ alloy.alloy_code }}</td>
+                        <td>{{ alloy.alloy_description }}</td>
+                        <td>{{ category.category_name }}</td>
+                        <td>{{ category.subcategory }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <div>
-        <h5>{{ category.category_id }}</h5>
-        <h6>{{ category.category_name }}</h6>
-        <h6>{{ category.subcategory }}</h6>
     </div>
-
-    {% endfor %}
-
 </body>
 {% endblock %}
