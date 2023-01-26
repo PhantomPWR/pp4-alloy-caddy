@@ -68,3 +68,14 @@ def get_alloy_list(request):
         "alloys": alloys
     }
     return render(request, 'alloylookup/alloy_list.html', context)
+
+
+def get_categories_list(request):
+    """
+    Retrieves the categories_list template.
+    """
+    categories = Category.objects.all()
+    context = {
+        "categories": categories
+    }
+    return render(request, 'alloylookup/categories_list.html', context)
