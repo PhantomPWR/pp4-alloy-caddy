@@ -25,6 +25,6 @@ urlpatterns = [
     path('subcategories/', views.get_subcategories_list, name='get_subcategories_list'),
     path('categories/', views.get_categories_list, name='get_categories_list'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
-    path('alloy_categories/', views.get_alloy_categories_list, name='get_alloy_categories_list'),
+    path('alloy_search/', views.alloy_search, name='alloy_search'),
     path('', views.get_alloy_list, name='get_alloy_list'),
 ]

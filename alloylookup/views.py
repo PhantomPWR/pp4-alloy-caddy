@@ -70,14 +70,15 @@ def get_alloy_list(request):
     return render(request, 'alloylookup/alloy_list.html', context)
 
 
-def get_alloy_categories_list(request):
+def alloy_search(request):
     """
-    Retrieves the alloy_categories_list template.
+    Retrieves the alloy search results template.
     """
-    alloy_categories = Category.objects.all()
     alloy_details = Alloy.objects.all()
+    # alloy_categories = Category.objects.all()
+
     context = {
-        "categories": alloy_categories,
-        "alloys": alloy_details
+        "alloy_details": alloy_details,
+        # "alloy_categories": alloy_categories
     }
-    return render(request, 'alloylookup/alloy_categories_list.html', context)
+    return render(request, 'alloylookup/alloy_search.html', context)
