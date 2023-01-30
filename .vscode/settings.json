@@ -23,5 +23,6 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "Visual Studio Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "HookyQR.beautify",
+   "hero-heroku.apiKey": "88a24e11-7236-4c30-8294-ea5dd6e6c609"
 }
