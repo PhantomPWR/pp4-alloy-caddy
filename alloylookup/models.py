@@ -162,6 +162,7 @@ class Alloy(models.Model):
     #     null=True
     # )
 
+
     # Elements
     si_min = models.CharField(max_length=300, null=True, blank=True)
     si_max = models.CharField(max_length=300, null=True, blank=True)
