@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.postgres.fields import ArrayField
+# from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 
@@ -146,21 +146,21 @@ class Alloy(models.Model):
         blank=True
     )
 
-    ELEMENT_CHOICES = (
-        ('si_min', 'Si Min'),
-        ('si_max', 'Si Max')
-    )
+    # ELEMENT_CHOICES = (
+    #     ('si_min', 'Si Min'),
+    #     ('si_max', 'Si Max')
+    # )
 
-    elements = ArrayField(
-        models.CharField(
-            choices=ELEMENT_CHOICES,
-            max_length=10,
-            blank=True,
-            null=True
-        ),
-        blank=True,
-        null=True
-    )
+    # elements = ArrayField(
+    #     models.CharField(
+    #         choices=ELEMENT_CHOICES,
+    #         max_length=10,
+    #         blank=True,
+    #         null=True
+    #     ),
+    #     blank=True,
+    #     null=True
+    # )
 
     # Elements
     si_min = models.CharField(max_length=300, null=True, blank=True)
