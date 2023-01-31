@@ -31,7 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'https://8000-phantompwr-pp4alloycadd-7vwtxsnizp7.ws-eu82.gitpod.io',
-    'localhost'
+    'localhost',
+    'pp4-alloy-caddy.herokuapp.com'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
