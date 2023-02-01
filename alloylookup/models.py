@@ -63,28 +63,6 @@ class SecondaryFootnote(models.Model):
         return str(self.footnote)
 
 
-class Subcategory(models.Model):
-    """
-    Model for Sub-categories.
-    """
-
-    class Meta:
-        verbose_name_plural = "Subcategories"
-
-    subcategory_id = models.IntegerField(
-        null=False,
-        blank=False
-    )
-    subcategory_name = models.CharField(
-        max_length=300,
-        null=False,
-        blank=False
-    )
-
-    def __str__(self):
-        return str(self.subcategory_name)
-
-
 class Category(models.Model):
     """
     Model for Categories.
@@ -102,15 +80,44 @@ class Category(models.Model):
         null=False,
         blank=False
     )
-    subcategory = models.ForeignKey(
-        Subcategory,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )
+    # subcategory = models.ForeignKey(
+    #     Subcategory,
+    #     on_delete=models.CASCADE,
+    #     null=True,
+    #     blank=True
+    # )
 
     def __str__(self):
         return str(self.category_name)
+
+
+class Subcategory(models.Model):
+    """
+    Model for Sub-categories.
+    """
+
+    class Meta:
+        verbose_name_plural = "Subcategories"
+
+    # category = models.ForeignKey(
+    #     Category,
+    #     on_delete=models.CASCADE,
+    #     null=True,
+    #     blank=True,
+    #     related_query_name='category'
+    # )
+    subcategory_id = models.IntegerField(
+        null=False,
+        blank=False
+    )
+    subcategory_name = models.CharField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
+
+    def __str__(self):
+        return str(self.subcategory_name)
 
 
 class Alloy(models.Model):
@@ -158,22 +165,21 @@ class Alloy(models.Model):
         blank=True
     )
 
-    ELEMENT_CHOICES = (
-        ('si_min', 'Si Min'),
-        ('si_max', 'Si Max')
-    )
+    # ELEMENT_CHOICES = (
+    #     ('si_min', 'Si Min'),
+    #     ('si_max', 'Si Max')
+    # )
 
-    elements = ArrayField(
-        models.CharField(
-            choices=ELEMENT_CHOICES,
-            max_length=10,
-            blank=True,
-            null=True
-        ),
-        blank=True,
-        null=True
-    )
-
+    # elements = ArrayField(
+    #     models.CharField(
+    #         choices=ELEMENT_CHOICES,
+    #         max_length=10,
+    #         blank=True,
+    #         null=True
+    #     ),
+    #     blank=True,
+    #     null=True
+    # )
 
     # Elements
     si_min = models.CharField(max_length=300, null=True, blank=True)
