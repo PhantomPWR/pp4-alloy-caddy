@@ -15,4 +15,3 @@ vscode:
     - ms-toolsai.jupyter-keymap
     - ms-toolsai.jupyter-renderers
     - monosans.djlint
-image: gitpod/workspace-postgres
