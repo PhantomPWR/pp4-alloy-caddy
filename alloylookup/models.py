@@ -9,6 +9,10 @@ class Country(models.Model):
     """
     Model for Countries.
     """
+
+    class Meta:
+        verbose_name_plural = "Countries"
+
     country_id = models.IntegerField(
         null=False,
         blank=False
@@ -63,6 +67,11 @@ class Subcategory(models.Model):
     """
     Model for Sub-categories.
     """
+
+    class Meta:
+        verbose_name_plural = "Subcategories"
+
+
     subcategory_id = models.IntegerField(
         null=False,
         blank=False
@@ -81,6 +90,10 @@ class Category(models.Model):
     """
     Model for Categories.
     """
+
+    class Meta:
+            verbose_name_plural = "Categories"
+
     category_id = models.IntegerField(
         null=False,
         blank=False
