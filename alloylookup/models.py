@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
+from multiselectfield import MultiSelectField
 
 # Create your models here.
 
@@ -165,23 +166,24 @@ class Alloy(models.Model):
         blank=True
     )
 
-    # ELEMENT_CHOICES = (
-    #     ('si_min', 'Si Min'),
-    #     ('si_max', 'Si Max')
-    # )
+    ELEMENT_CHOICES = (
+        ('si', 'Si'),
+        ('fe', 'Fe'),
+        ('cu', 'Cu')
+    )
 
     # elements = ArrayField(
-    #     models.CharField(
-    #         choices=ELEMENT_CHOICES,
-    #         max_length=10,
-    #         blank=True,
-    #         null=True
-    #     ),
+    #     models.CharField(max_length=255),
+    #     default=[],
     #     blank=True,
-    #     null=True
-    # )
+    #     choices=ELEMENT_CHOICES
+    #     )
+    elements = MultiSelectField(
+        max_length=255,
+        choices=ELEMENT_CHOICES
+    )
 
-    # Elements
+ # Elements
     si_min = models.CharField(max_length=300, null=True, blank=True)
     si_max = models.CharField(max_length=300, null=True, blank=True)
     fe_min = models.CharField(max_length=300, null=True, blank=True)
@@ -294,6 +296,7 @@ class Alloy(models.Model):
     others_each = models.CharField(max_length=300, null=True, blank=True)
     others_total = models.CharField(max_length=300, null=True, blank=True)
     special_note = models.CharField(max_length=300, null=True, blank=True)
+
 
     def __str__(self):
         return str(self.alloy_code)
