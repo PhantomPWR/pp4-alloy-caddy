@@ -14,9 +14,14 @@ class SubCategoryAdmin(admin.ModelAdmin):
     ordering = ['subcategory_id']
 
 
+class AlloyAdmin(admin.ModelAdmin):
+    list_display = ('alloy_code', 'alloy_description')
+    ordering = ['alloy_code']
+
+
 admin.site.register(Country)
 admin.site.register(PrimaryFootnote)
 admin.site.register(SecondaryFootnote)
 admin.site.register(Subcategory, SubCategoryAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Alloy)
+admin.site.register(Alloy, AlloyAdmin)
