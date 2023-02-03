@@ -18,6 +18,7 @@
                     <th scope="col">Special Note</th>
                     <th scope="col">Primary Footnote</th>
                     <th scope="col">Secondary Footnote</th>
+                    <th scope="col">Elements</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,11 @@
                         <td>{{alloy.special_note }}</td>                        
                         <td>{{ alloy.primary_footnote_id }}</td>
                         <td>{{ alloy.secondary_footnote_id }}</td>
+                        <td id="elements-{{ alloy.alloy_code }}">
+                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                View Elements
+                            </button>
+                        </td>
 
                     </tr>   
                 {% endfor %}
@@ -40,5 +46,29 @@
         </table>
 
     </div>
+
+    <!-- Modal for Displaying Alloy Elements -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            {% for alloy in alloy_details %}
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ alloy.alloy_description }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <h6>Elements</h6>
+            {% for alloy in alloy_details %}
+                {{ alloy.alloy_elements }}
+            {% endfor %}
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+
 </body>
 {% endblock %}
