@@ -35,39 +35,33 @@
                         <td>{{ alloy.primary_footnote_id }}</td>
                         <td>{{ alloy.secondary_footnote_id }}</td>
                         <td id="elements-{{ alloy.alloy_code }}">
-                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#elementsModal-{{ alloy.id }}">
                                 View Elements
                             </button>
+                            <!-- Modal for Displaying Alloy Elements -->
+                            <div class="modal fade" id="elementsModal-{{ alloy.id }}" tabindex="-1" aria-labelledby="elementsModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="elementsModalLabel">{{ alloy.alloy_description }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <h6>Elements</h6>
+                                        {{ alloy.alloy_elements }}
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </td>
-
                     </tr>   
                 {% endfor %}
             </tbody>
         </table>
 
-    </div>
-
-    <!-- Modal for Displaying Alloy Elements -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            {% for alloy in alloy_details %}
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{ alloy.alloy_description }}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <h6>Elements</h6>
-            {% for alloy in alloy_details %}
-                {{ alloy.alloy_elements }}
-            {% endfor %}
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-            {% endfor %}
-        </div>
-        </div>
     </div>
 
 </body>

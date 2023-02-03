@@ -164,7 +164,7 @@ class Alloy(models.Model):
         blank=True
     )
 
-    alloy_elements = models.JSONField(null=True)
+    alloy_elements = models.JSONField(default=dict)
 
  # Elements
     si_min = models.CharField(max_length=300, null=True, blank=True)
@@ -279,7 +279,6 @@ class Alloy(models.Model):
     others_each = models.CharField(max_length=300, null=True, blank=True)
     others_total = models.CharField(max_length=300, null=True, blank=True)
     special_note = models.CharField(max_length=300, null=True, blank=True)
-
 
     def __str__(self):
         return str(self.alloy_code)
