@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 
@@ -165,6 +166,13 @@ class Alloy(models.Model):
     )
 
     alloy_elements = models.JSONField(default=dict)
+    alloy_elements_array = ArrayField(
+        ArrayField(
+            models.CharField(max_length=300, blank=True),
+            default=dict,
+            size=50
+        )
+    )
 
  # Elements
     si_min = models.CharField(max_length=300, null=True, blank=True)

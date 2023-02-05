@@ -48,7 +48,11 @@
                                     </div>
                                     <div class="modal-body">
                                     <h6>Elements</h6>
-                                        {{ alloy.alloy_elements }}
+                                        <p><span>alloy_elements: </span>{{ alloy.alloy_elements }}</p>
+                                        <p><span>alloy_elements_array: </span>{{ alloy.alloy_elements_array }}</p>
+                                        {% for element in alloy.alloy_elements_array %}
+                                            {{ element }}
+                                        {% endfor %}
                                     </div>
                                     <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
