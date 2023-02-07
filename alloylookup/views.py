@@ -74,7 +74,7 @@ def alloy_search(request):
     """
     Retrieves the alloy search results template.
     """
-    alloy_details = Alloy.objects.all()
+    alloy_details = Alloy.objects.all()  # Display all rows from the Alloy model
     alloy_element_obj = Alloy.objects.filter(alloy_elements__isnull=False)
     alloy_elements = alloy_element_obj.all()
 
