@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db import models
+from django_json_widget.widgets import JSONEditorWidget
 from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Category, Alloy
 
 # Register your models here.
@@ -17,6 +19,9 @@ class SubCategoryAdmin(admin.ModelAdmin):
 class AlloyAdmin(admin.ModelAdmin):
     list_display = ('alloy_code', 'alloy_description')
     ordering = ['alloy_code']
+    formfield_overrides = {
+        models.JSONField: {'widget': JSONEditorWidget},
+    }
 
 
 admin.site.register(Country)
