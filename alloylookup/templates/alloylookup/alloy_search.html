@@ -40,30 +40,56 @@
                             </button>
                             <!-- Modal for Displaying Alloy Elements -->
                             <div class="modal fade" id="elementsModal-{{ alloy.id }}" tabindex="-1" aria-labelledby="elementsModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                     <h5 class="modal-title" id="elementsModalLabel">{{ alloy.alloy_description }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                    <h5>Elements</h5>
-                                    <!-- {{ alloy.alloy_elements.elements }} -->
-                                        {% for element in alloy.alloy_elements.elements %}
-                                            <p>
-                                                <strong>{{ element.name }}</strong>
-                                                {% for value in element.values %}
-                                                    <p><span>Min: </span>{{ value.min }}</p>
-                                                    <p><span>Max: </span>{{ value.max }}</p>
-                                                {% endfor %}
-                                            </p>
-                                        {% endfor %}
-                                        <table class="table table-striped">
+                                        <h5>Elements & Compounds</h5>
+                                        <table class="table table-bordered">
                                             <thead class="table-light">
                                                 {% for element in alloy.alloy_elements.elements %}
-                                                <th>{{ element.name }}</th>
+                                                    <th>{{ element.name }}</th>
+                                                {% endfor %}
+                                                {% for compound in alloy.alloy_elements.compounds %}
+                                                    <th>{{ compound.name }}</th>
+                                                {% endfor %}
+                                                {% for other in alloy.alloy_elements.others %}
+                                                    <th>{{ other.name }}</th>
                                                 {% endfor %}
                                             </thead>
+                                            <tbody>
+                                                <tr>
+                                                    {% for element in alloy.alloy_elements.elements %}
+                                                        {% for value in element.values %}
+                                                            <td>
+                                                                <span>Min: </span>{{ value.min }}{{value.unit}}<br>
+                                                                <span>Max: </span>{{ value.max }}{{value.unit}}
+                                                            </td>
+                                                        {% endfor %}
+                                                    {% endfor %}
+
+                                                    {% for compound in alloy.alloy_elements.compounds %}
+                                                        {% for value in compound.values %}
+                                                            <td>
+                                                                <span>Min: </span>{{ value.min }}{{value.unit}}<br>
+                                                                <span>Max: </span>{{ value.max }}{{value.unit}}
+                                                            </td>
+                                                        {% endfor %}
+                                                    {% endfor %}
+
+                                                    {% for other in alloy.alloy_elements.others %}
+                                                        {% for value in other.values %}
+                                                            <td>
+                                                                <span>Each: </span>{{ value.each }}<br>
+                                                                <span>Total: </span>{{ value.total }}
+                                                            </td>
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <div class="modal-footer">
