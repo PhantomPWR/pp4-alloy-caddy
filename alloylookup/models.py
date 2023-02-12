@@ -98,13 +98,13 @@ class Subcategory(models.Model):
     class Meta:
         verbose_name_plural = "Subcategories"
 
-    # category = models.ForeignKey(
-    #     Category,
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True,
-    #     related_query_name='category'
-    # )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_query_name='category'
+    )
     subcategory_id = models.IntegerField(
         null=False,
         blank=False
