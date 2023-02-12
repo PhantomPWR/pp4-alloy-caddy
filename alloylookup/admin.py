@@ -6,6 +6,11 @@ from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Ca
 # Register your models here.
 
 
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('country_id', 'country_name')
+    ordering = ['country_id']
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('category_id', 'category_name')
     ordering = ['category_id']
@@ -24,7 +29,7 @@ class AlloyAdmin(admin.ModelAdmin):
     }
 
 
-admin.site.register(Country)
+admin.site.register(Country, CountryAdmin)
 admin.site.register(PrimaryFootnote)
 admin.site.register(SecondaryFootnote)
 admin.site.register(Subcategory, SubCategoryAdmin)
