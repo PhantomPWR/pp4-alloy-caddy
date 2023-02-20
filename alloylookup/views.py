@@ -76,7 +76,16 @@ def alloy_search(request):
     """
     alloy_details = Alloy.objects.all()  # Display all rows from the Alloy model
 
+    print(request.GET)
+
+    query_dict = request.GET
+    query = query_dict.GET("search_term")  # <input type="text" name="search_term">
+    alloy_object = None
+    if query is not None:
+        alloy_object = Alloy.objects.get(id=query)
+
     context = {
-        "alloy_details": alloy_details
+        "alloy_details": alloy_details,
+        "alloy_object": alloy_object
     }
     return render(request, 'alloylookup/alloy_search.html', context)
