@@ -163,7 +163,6 @@ class Alloy(models.Model):
         null=True,
         blank=True
     )
-
     alloy_elements = models.JSONField(default=dict)
 
     def __str__(self):
