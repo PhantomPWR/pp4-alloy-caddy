@@ -130,7 +130,9 @@ class AlloyQuerySet(models.QuerySet):
             return self.none()  # Return 0 results if search_term is empty
         alloy_lookup = Q(alloy_code__icontains=query) \
             | Q(alloy_description__icontains=query) \
-            | Q(alloy_elements__icontains=query)
+            | Q(alloy_elements__icontains=query) \
+            | Q(category__category_name__icontains=query) \
+            | Q(subcategory__subcategory_name__icontains=query)
 
         return self.filter(alloy_lookup)
 
