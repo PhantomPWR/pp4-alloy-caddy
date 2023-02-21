@@ -93,7 +93,7 @@ class Category(models.Model):
 
 class Subcategory(models.Model):
     """
-    Model for Sub-categories.
+    Model for Subcategories.
     """
 
     class Meta:
@@ -128,7 +128,9 @@ class AlloyQuerySet(models.QuerySet):
     def search(self, query=None):
         if query is None or query == "":
             return self.none()  # Return 0 results if search_term is empty
-        alloy_lookup = Q(alloy_code__icontains=query) | Q(alloy_description__icontains=query) | Q(alloy_elements__icontains=query)
+        alloy_lookup = Q(alloy_code__icontains=query) \
+            | Q(alloy_description__icontains=query) \
+            | Q(alloy_elements__icontains=query)
 
         return self.filter(alloy_lookup)
 

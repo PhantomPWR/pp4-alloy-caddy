@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Category, Alloy
+from .models import Country, PrimaryFootnote, SecondaryFootnote, \
+                    Subcategory, Category, Alloy
 
 # Create your views here.
 
@@ -12,7 +13,11 @@ def get_countries_list(request):
     context = {
         "countries": countries
     }
-    return render(request, 'alloylookup/countries_list.html', context)
+    return render(
+        request,
+        'alloylookup/countries_list.html',
+        context
+        )
 
 
 def get_primary_footnotes_list(request):
@@ -23,7 +28,11 @@ def get_primary_footnotes_list(request):
     context = {
         "primary_footnotes": primary_footnotes
     }
-    return render(request, 'alloylookup/primary_footnotes_list.html', context)
+    return render(
+        request,
+        'alloylookup/primary_footnotes_list.html',
+        context
+        )
 
 
 def get_secondary_footnotes_list(request):
@@ -34,7 +43,11 @@ def get_secondary_footnotes_list(request):
     context = {
         "secondary_footnotes": secondary_footnotes
     }
-    return render(request, 'alloylookup/secondary_footnotes_list.html', context)
+    return render(
+        request,
+        'alloylookup/secondary_footnotes_list.html',
+        context
+        )
 
 
 def get_subcategories_list(request):
@@ -45,7 +58,11 @@ def get_subcategories_list(request):
     context = {
         "subcategories": subcategories
     }
-    return render(request, 'alloylookup/subcategories_list.html', context)
+    return render(
+        request,
+        'alloylookup/subcategories_list.html',
+        context
+        )
 
 
 def get_categories_list(request):
@@ -56,7 +73,11 @@ def get_categories_list(request):
     context = {
         "categories": categories
     }
-    return render(request, 'alloylookup/categories_list.html', context)
+    return render(
+        request,
+        'alloylookup/categories_list.html',
+        context
+        )
 
 
 def get_alloy_list(request):
@@ -67,19 +88,27 @@ def get_alloy_list(request):
     context = {
         "alloys": alloys
     }
-    return render(request, 'alloylookup/alloy_list.html', context)
+    return render(
+        request,
+        'alloylookup/alloy_list.html',
+        context
+        )
 
 
 def alloy_search(request):
     """
     Retrieves the alloy search results template.
     """
-    alloy_details = Alloy.objects.all()  # Display all rows from the Alloy model
-    query = request.GET.get("search_term")  # <input type="text" name="search_term">
+    alloy_details = Alloy.objects.all()  # Display all rows from Alloy model
+    query = request.GET.get("search_term")  # <input name="search_term">
     alloy_object_list = Alloy.objects.search(query=query)
 
     context = {
         "alloy_details": alloy_details,
         "alloy_object_list": alloy_object_list
     }
-    return render(request, 'alloylookup/alloy_search.html', context)
+    return render(
+        request,
+        'alloylookup/alloy_search.html',
+        context
+        )
