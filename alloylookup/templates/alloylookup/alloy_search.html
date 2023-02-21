@@ -4,7 +4,7 @@
 <body>
     <div class="container">
         <h1>Alloy Search</h1>
-        <form action="">
+        <form action="/alloy_search/">
             <input type="text" name="search_term" id="">
             <input type="submit" value="Search">
           </form>
@@ -23,7 +23,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- {% for alloy in alloy_details %}    -->
                 {% for alloy in alloy_object %}
                     <tr>
                         <td>{{ alloy.alloy_code }}</td>

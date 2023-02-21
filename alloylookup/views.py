@@ -79,10 +79,10 @@ def alloy_search(request):
     print(request.GET)
 
     query_dict = request.GET
-    query = query_dict.GET("search_term")  # <input type="text" name="search_term">
+    query = query_dict.get("search_term")  # <input type="text" name="search_term">
     alloy_object = None
     if query is not None:
-        alloy_object = Alloy.objects.get(id=query)
+        alloy_object = Alloy.objects.filter(alloy_description__contains=query)
 
     context = {
         "alloy_details": alloy_details,
