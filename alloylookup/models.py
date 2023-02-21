@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.conf import settings
 
 # Create your models here.
@@ -119,6 +120,30 @@ class Subcategory(models.Model):
         return str(self.subcategory_name)
 
 
+class AlloyQuerySet(models.QuerySet):
+    """
+    Custom query set
+    Used to refine alloy searches
+    """
+    def search(self, query=None):
+        if query is None or query == "":
+            return self.none()  # Return 0 results if search_term is empty
+        alloy_lookup = Q(alloy_code__icontains=query) | Q(alloy_description__icontains=query) | Q(alloy_elements__icontains=query)
+
+        return self.filter(alloy_lookup)
+
+
+class AlloyManager(models.Manager):
+    """
+    Custom model manager for db lookups
+    """
+    def get_queryset(self):
+        return AlloyQuerySet(self.model, using=self._db)
+
+    def search(self, query=None):
+        return self.get_queryset().search(query=query)
+
+
 class Alloy(models.Model):
     """
     Model for Alloys.
@@ -164,6 +189,8 @@ class Alloy(models.Model):
         blank=True
     )
     alloy_elements = models.JSONField(default=dict)
+
+    objects = AlloyManager()
 
     def __str__(self):
         return str(self.alloy_code)

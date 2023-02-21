@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.db.models import Q
 from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Category, Alloy
 
 # Create your views here.
@@ -76,15 +75,8 @@ def alloy_search(request):
     Retrieves the alloy search results template.
     """
     alloy_details = Alloy.objects.all()  # Display all rows from the Alloy model
-
-    print(request.GET)
-
     query = request.GET.get("search_term")  # <input type="text" name="search_term">
-    alloy_object_list = Alloy.objects.all()
-    if query is not None:
-        alloy_lookup = Q(alloy_code__icontains=query) | Q(alloy_description__icontains=query) | Q(alloy_elements__icontains=query)
-
-        alloy_object_list = Alloy.objects.filter(alloy_lookup)
+    alloy_object_list = Alloy.objects.search(query=query)
 
     context = {
         "alloy_details": alloy_details,
