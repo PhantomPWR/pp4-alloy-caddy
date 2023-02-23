@@ -5,8 +5,11 @@
 <h1>Login</h1>
 <div class="container">
     <form action="POST">{% csrf_token %}
-        <input type="text" name="username" id="">
-        <input type="text" name="password" id="">
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <input type="text" name="username" placeholder="username" id="">
+        <input type="password" name="password" placeholder="password" id="">
         <button type="submit">Log In</button>
     </form>
 </div>
