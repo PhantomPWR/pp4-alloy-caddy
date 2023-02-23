@@ -34,6 +34,7 @@ DEBUG = development
 
 ALLOWED_HOSTS = [
     'https://8000-phantompwr-pp4alloycadd-7vwtxsnizp7.ws-eu82.gitpod.io',
+    'https://8000-phantompwr-pp4alloycadd-lwa918vtklz.ws-eu87.gitpod.io/',
     'localhost',
     'pp4-alloy-caddy.herokuapp.com'
     ]
