@@ -18,7 +18,9 @@ def account_login(request):
         if user is None:
             context = {"error": "Invalid username or password."}
             return render(request, "accounts/login.html")
-
+         # Remove print statement !!!
+        print(user)
+        # Remove print statement !!!
 
     return render(request, "accounts/login.html", {})
 
