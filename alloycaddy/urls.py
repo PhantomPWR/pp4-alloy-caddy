@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from accounts.views import account_login
+from accounts import views as accounts_views
 from alloylookup import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', account_login, name='account_login'),
+    path('login/', accounts_views.account_login, name='account_login'),
     path('', views.get_alloy_list, name='get_alloy_list'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
     path('alloy_search/', views.alloy_search, name='alloy_search'),
