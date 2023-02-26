@@ -45,6 +45,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_json_widget',
+    'accounts',
     'alloylookup',
 ]
 
