@@ -15,16 +15,31 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from accounts import views as accounts_views
 from alloylookup import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('countries/', views.get_countries_list, name='get_countries_list'),
-    path('primary_footnotes/', views.get_primary_footnotes_list, name='get_primary_footnotes_list'),
-    path('secondary_footnotes/', views.get_secondary_footnotes_list, name='get_secondary_footnotes_list'),
-    path('subcategories/', views.get_subcategories_list, name='get_subcategories_list'),
-    path('categories/', views.get_categories_list, name='get_categories_list'),
+    path('login/', accounts_views.account_login, name='account_login'),
+    path('', views.get_alloy_list, name='get_alloy_list'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
     path('alloy_search/', views.alloy_search, name='alloy_search'),
-    path('', views.get_alloy_list, name='get_alloy_list'),
+    path('countries/', views.get_countries_list, name='get_countries_list'),
+    path('categories/', views.get_categories_list, name='get_categories_list'),
+    path(
+        'primary_footnotes/',
+        views.get_primary_footnotes_list,
+        name='get_primary_footnotes_list'
+    ),
+    path(
+        'secondary_footnotes/',
+        views.get_secondary_footnotes_list,
+        name='get_secondary_footnotes_list'
+    ),
+    path(
+        'subcategories/',
+        views.get_subcategories_list,
+        name='get_subcategories_list'
+    ),
+
 ]
