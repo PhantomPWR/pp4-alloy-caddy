@@ -19,7 +19,7 @@ def account_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse('alloy_search'))
+            return redirect('alloy_search')
         else:
             messages.info(request, 'Incorrect username or password')
     context = {
