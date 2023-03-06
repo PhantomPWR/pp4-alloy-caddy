@@ -1,0 +1,14 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+<div class="container">
+    <form method="POST" action="">{% csrf_token %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+    {% endfor %}
+        <input type="text" name="username" placeholder="username" id="">
+        <input type="password" name="password" placeholder="password" id="">
+        <button type="submit">Log In</button>
+
+{% endblock %}

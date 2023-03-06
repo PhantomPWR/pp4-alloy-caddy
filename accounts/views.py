@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -38,4 +38,8 @@ def account_logout(request):
 
 
 def account_register(request):
+    """
+    Handle user account registration
+    """
+    
     return render(request, "accounts/register.html", context)
