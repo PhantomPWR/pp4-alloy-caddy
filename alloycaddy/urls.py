@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path
 from accounts import views as accounts_views
 from alloylookup import views
@@ -21,7 +22,8 @@ from alloylookup import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', accounts_views.account_login, name='account_login'),
-    path('', views.get_alloy_list, name='get_alloy_list'),
+    # path('', views.get_alloy_list, name='get_alloy_list'),
+    path('', accounts_views.account_login, name='account_login'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
     path('alloy_search/', views.alloy_search, name='alloy_search'),
     path('countries/', views.get_countries_list, name='get_countries_list'),

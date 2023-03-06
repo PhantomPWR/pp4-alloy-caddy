@@ -40,7 +40,7 @@ ALLOWED_HOSTS = [
     ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-phantompwr-pp4alloycadd-7vwtxsnizp7.ws-eu82.gitpod.io',
+    'https://8000-phantompwr-pp4alloycadd-xa8jsqjaiez.ws-eu89.gitpod.io',
     'pp4-alloy-caddy.herokuapp.com'
 ]
 
@@ -102,6 +102,7 @@ WSGI_APPLICATION = 'alloycaddy.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
 
 DATABASES = {
      'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
