@@ -41,5 +41,4 @@ def account_register(request):
     """
     Handle user account registration
     """
-    
     return render(request, "accounts/register.html", context)
