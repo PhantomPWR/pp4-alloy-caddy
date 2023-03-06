@@ -30,7 +30,11 @@ def account_login(request):
 
 
 def account_logout(request):
-    return render(request, "accounts/logout.html", context)
+    """
+    Handle user logging out
+    """
+    logout(request)
+    return HttpResponseRedirect(reverse('account_login'))
 
 
 def account_register(request):
