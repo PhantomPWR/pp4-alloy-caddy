@@ -31,10 +31,10 @@ def account_login(request):
 
 def account_logout(request):
     """
-    Handle logged out user
+    Handle user logging out
     """
     logout(request)
-    return HttpResponseRedirect(reverse('login'))
+    return HttpResponseRedirect(reverse('account_login'))
 
 
 def account_register(request):
