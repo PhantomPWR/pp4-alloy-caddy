@@ -8,8 +8,10 @@
         {% for message in messages %}
         <p>{{message}}</p>
     {% endfor %}
-        <input type="text" name="username" placeholder="username" id="">
-        <input type="password" name="password" placeholder="password" id="">
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" id="password">
         <button type="submit">Log In</button>
     </form>
 </div>
