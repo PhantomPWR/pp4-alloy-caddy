@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -19,7 +19,7 @@ def account_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('alloy_search')
+            return HttpResponseRedirect(reverse('alloy_search'))
         else:
             messages.info(request, 'Incorrect username or password')
     context = {
@@ -30,8 +30,16 @@ def account_login(request):
 
 
 def account_logout(request):
-    return render(request, "accounts/logout.html", context)
+    """
+    Handle logged out user
+    """
+    logout(request)
+    return HttpResponseRedirect(reverse('login'))
 
 
 def account_register(request):
+    """
+    Handle user account registration
+    """
+    
     return render(request, "accounts/register.html", context)
