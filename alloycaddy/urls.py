@@ -22,8 +22,13 @@ from alloylookup import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', accounts_views.account_login, name='account_login'),
+<<<<<<< HEAD
+    path('logout/', accounts_views.account_logout, name='account_logout'),
+    path('', views.get_alloy_list, name='get_alloy_list'),
+=======
     # path('', views.get_alloy_list, name='get_alloy_list'),
     path('', accounts_views.account_login, name='account_login'),
+>>>>>>> main
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
     path('alloy_search/', views.alloy_search, name='alloy_search'),
     path('countries/', views.get_countries_list, name='get_countries_list'),
