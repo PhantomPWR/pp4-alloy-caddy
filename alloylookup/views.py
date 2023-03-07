@@ -1,6 +1,18 @@
-from django.shortcuts import render
-from .models import Country, PrimaryFootnote, SecondaryFootnote, \
-                    Subcategory, Category, Alloy
+from django.shortcuts import (
+    render,
+    redirect,
+    get_object_or_404
+    )
+from django.contrib import messages
+from .forms import CreateAlloyForm
+from .models import (
+    Country,
+    PrimaryFootnote,
+    SecondaryFootnote,
+    Subcategory,
+    Category,
+    Alloy
+    )
 
 # Create your views here.
 
@@ -112,3 +124,25 @@ def alloy_search(request):
         'alloylookup/alloy_search.html',
         context
         )
+
+
+def create_alloy(request):
+    """
+    Form for creating an alloy
+    """
+    create_alloy_form = CreateAlloyForm()
+    page_title = "Add an Alloy"
+    if request.method == "POST":
+        create_alloy_form = CreateAlloyForm(request.POST)
+        if create_alloy_form.is_valid():
+            instance = create_alloy_form.save(commit=False)
+            instance.save()
+            messages.success(request, "Alloy added successfully")
+            return redirect('/alloy_search')
+
+    context = {
+        'create_alloy_form': create_alloy_form,
+        'page_title': page_title
+
+    }
+    return render(request, 'alloylookup/create_alloy.html', context)

@@ -1,7 +1,14 @@
 from django.contrib import admin
 from django.db import models
 from django_json_widget.widgets import JSONEditorWidget
-from .models import Country, PrimaryFootnote, SecondaryFootnote, Subcategory, Category, Alloy
+from .models import (
+    Country,
+    PrimaryFootnote,
+    SecondaryFootnote,
+    Subcategory,
+    Category,
+    Alloy
+    )
 
 # Register your models here.
 
