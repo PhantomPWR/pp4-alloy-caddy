@@ -1,0 +1,15 @@
+{% extends 'alloylookup/base.html' %}
+
+{% block content %}
+
+<h1>Add an Alloy</h1>
+<div class="d-flex justify-content-center md-3 form-group">
+    <form action="/create_alloy/" method="POST">
+        {% csrf_token %}
+        {{ create_alloy_form }}
+        <br>
+        <button class="btn btn-primary" type="submit" name="Add Alloy">Add Alloy</button>
+    </form>
+</div>
+
+{% endblock %}

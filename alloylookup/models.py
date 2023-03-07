@@ -8,7 +8,7 @@ from django.http import HttpResponse
 
 class Country(models.Model):
     """
-    Model for Countries.
+    Model for Countries
     """
 
     class Meta:

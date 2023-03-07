@@ -43,5 +43,6 @@ urlpatterns = [
         views.get_subcategories_list,
         name='get_subcategories_list'
     ),
+    path('create_alloy/', views.create_alloy, name='create_alloy'),
 
 ]
