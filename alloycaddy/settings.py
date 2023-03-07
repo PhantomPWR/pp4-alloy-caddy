@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_json_widget',
+    'prettyjson',
     'accounts',
     'alloylookup',
 ]
