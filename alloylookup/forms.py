@@ -4,7 +4,7 @@ ModelForms for AlloyLookup App
 from django.contrib.auth import get_user_model
 from django.forms import ModelForm
 from django import forms
-from django_json_widget.widgets import JSONEditorWidget
+from prettyjson import PrettyJSONWidget
 from .models import (
     Alloy,
     Category,
@@ -41,7 +41,7 @@ class CreateAlloyForm(ModelForm):
             'subcategory': forms.Select(attrs={'class': 'form-control'}),
             'alloy_description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'cols': '80', 'rows': '20'
+                'cols': '80', 'rows': '5'
                 }),
             'primary_footnote_id': forms.Select(attrs={
                 'class': 'form-control'
@@ -49,6 +49,8 @@ class CreateAlloyForm(ModelForm):
             'secondary_footnote_id': forms.Select(attrs={
                 'class': 'form-control'
                 }),
-            'country': forms.Select(attrs={'class': 'form-control'}),
-            # 'alloy_elements': forms.JSONField(attrs={'class': 'form-control'}),
+            'country_code': forms.Select(attrs={'class': 'form-control'}),
+            'alloy_elements': PrettyJSONWidget(attrs={
+                'class': 'form-control',
+                }),
         }
