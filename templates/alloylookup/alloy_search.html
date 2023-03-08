@@ -17,8 +17,6 @@
                     <th scope="col">Category</th>
                     <th scope="col">Sub-Category</th>
                     <th scope="col">Country</th>
-                    <th scope="col">Primary Footnote</th>
-                    <th scope="col">Secondary Footnote</th>
                     <th scope="col">Elements</th>
                 </tr>
             </thead>
@@ -31,8 +29,6 @@
                             <td>{{ alloy.category }}</td>
                             <td>{{ alloy.subcategory }}</td>
                             <td>{{ alloy.country_code }}</td>                       
-                            <td>{{ alloy.primary_footnote_id }}</td>
-                            <td>{{ alloy.secondary_footnote_id }}</td>
                             <td id="elements-{{ alloy.alloy_code }}">
                                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#elementsModal-{{ alloy.id }}">
                                     View Elements
@@ -92,7 +88,21 @@
                                             </table>
                                             <div>
                                                 <strong>Special Note</strong>
-                                                <p>{{ alloy.alloy_elements.special_note }}</p>
+                                                {% if alloy.alloy_elements.special_note %}
+                                                    <p>{{ alloy.alloy_elements.special_note }}</p>
+                                                {% else %}
+                                                    <p>n/a</p>
+                                                {% endif %}
+                                            </div>
+                                            <div>
+                                                <strong>Footnotes</strong>
+                                                {% if alloy.primary_footnote_id %}
+                                                    <p>{{ alloy.primary_footnote_id }}</p>
+                                                {% elif alloy.secondary_footnote_id %}
+                                                    <p>{{ alloy.secondary_footnote_id }}</p>
+                                                {% else %}
+                                                    <p>n/a</p>
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <div class="modal-footer">
