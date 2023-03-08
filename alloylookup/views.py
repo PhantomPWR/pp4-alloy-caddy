@@ -135,8 +135,7 @@ def create_alloy(request):
     if request.method == "POST":
         create_alloy_form = CreateAlloyForm(request.POST)
         if create_alloy_form.is_valid():
-            instance = create_alloy_form.save(commit=False)
-            instance.save()
+            create_alloy_form.save()
             messages.success(request, "Alloy added successfully")
             return redirect('/alloy_search')
 
