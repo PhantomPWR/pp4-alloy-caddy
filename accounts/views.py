@@ -41,4 +41,10 @@ def account_register(request):
     """
     Handle user account registration
     """
+    page_title = 'Account Registration'
+
+    context = {
+        'page_title': page_title
+    }
+
     return render(request, "accounts/register.html", context)
