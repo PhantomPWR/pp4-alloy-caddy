@@ -45,7 +45,6 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -158,7 +157,6 @@ USE_TZ = True
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
- 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
