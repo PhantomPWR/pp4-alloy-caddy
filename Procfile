@@ -1,1 +1,1 @@
-web: gunicorn alloycaddy.wsgi
+web: gunicorn alloycaddy.wsgi:application
