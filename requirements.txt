@@ -1,7 +1,5 @@
 asgiref==3.6.0
-cloudinary==1.31.0
 dj-database-url==1.2.0
-dj3-cloudinary-storage==0.0.6
 Django==3.2.16
 django-entangled==0.5.3
 django-json-widget==1.1.1
@@ -13,4 +11,3 @@ pytz==2022.7.1
 sqlparse==0.4.3
 standardjson==0.3.1
 whitenoise==6.4.0
-backports.zoneinfo==0.2.1;python_version<"3.9"
