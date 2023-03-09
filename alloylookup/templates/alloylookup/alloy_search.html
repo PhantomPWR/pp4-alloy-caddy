@@ -1,11 +1,10 @@
 {% extends 'alloylookup/base.html' %}
 
 {% block content %} 
-<body>
     <div class="container">
         <h1>Alloy Search</h1>
         <form action="/alloy_search/">
-            <input type="text" name="search_term" id="">
+            <input type="text" name="search_term" id="search_term">
             <input type="submit" value="Search">
           </form>
         
@@ -120,5 +119,4 @@
 
     </div>
 
-</body>
 {% endblock %}
