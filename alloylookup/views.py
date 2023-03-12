@@ -1,9 +1,18 @@
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import (
     render,
     redirect,
     get_object_or_404
     )
 from django.contrib import messages
+from django.contrib.auth import (
+    authenticate,
+    login,
+    logout,
+    get_user_model
+    )
+from django.contrib.auth.decorators import login_required
 from .forms import CreateAlloyForm
 from .models import (
     Country,
@@ -17,6 +26,7 @@ from .models import (
 # Create your views here.
 
 
+@login_required(login_url='account_login')
 def get_countries_list(request):
     """
     Retrieves the countries_list template.
@@ -32,6 +42,7 @@ def get_countries_list(request):
         )
 
 
+@login_required(login_url='account_login')
 def get_primary_footnotes_list(request):
     """
     Retrieves the primary_footnotes_list template.
@@ -47,6 +58,7 @@ def get_primary_footnotes_list(request):
         )
 
 
+@login_required(login_url='account_login')
 def get_secondary_footnotes_list(request):
     """
     Retrieves the secondary_footnotes_list template.
@@ -61,7 +73,7 @@ def get_secondary_footnotes_list(request):
         context
         )
 
-
+@login_required(login_url='account_login')
 def get_subcategories_list(request):
     """
     Retrieves the subcategories_list template.
@@ -76,7 +88,7 @@ def get_subcategories_list(request):
         context
         )
 
-
+@login_required(login_url='account_login')
 def get_categories_list(request):
     """
     Retrieves the categories_list template.
@@ -91,7 +103,7 @@ def get_categories_list(request):
         context
         )
 
-
+@login_required(login_url='account_login')
 def get_alloy_list(request):
     """
     Retrieves the alloy_list template.
@@ -106,7 +118,7 @@ def get_alloy_list(request):
         context
         )
 
-
+@login_required(login_url='account_login')
 def alloy_search(request):
     """
     Retrieves the alloy search results template.
@@ -125,7 +137,7 @@ def alloy_search(request):
         context
         )
 
-
+@login_required(login_url='account_login')
 def create_alloy(request):
     """
     Form for creating an alloy

@@ -26,5 +26,20 @@
    "editor.defaultFormatter": "HookyQR.beautify",
    "hero-heroku.apiKey": "88a24e11-7236-4c30-8294-ea5dd6e6c609",
    "editor.glyphMargin": true,
-   "editor.showFoldingControls": "always"
+   "editor.showFoldingControls": "always",
+   "sqltools.useNodeRuntime": true,
+   "sqltools.connections": [
+      {
+         "previewLimit": 50,
+         "driver": "SQLite",
+         "name": "alloycaddy",
+         "database": "https://github.com/PhantomPWR/pp4-alloy-caddy/blob/7abc6298b31e9f852d854efbea634ddfa02353c3/db.sqlite3"
+      },
+      {
+         "previewLimit": 50,
+         "driver": "SQLite",
+         "name": "orig-alloycaddy",
+         "database": "https://github.com/PhantomPWR/pp4-alloy-caddy/blob/7abc6298b31e9f852d854efbea634ddfa02353c3/orig-db.sqlite3"
+      }
+   ]
 }
