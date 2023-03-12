@@ -54,3 +54,44 @@ class CreateAlloyForm(ModelForm):
                 'class': 'form-control',
                 }),
         }
+
+
+class UpdateAlloyForm(ModelForm):
+    """
+    ModelForm for updating alloys
+    """
+    class Meta:
+        """
+        Meta class for UpdateAlloyForm
+        """
+        model = Alloy
+        fields = [
+            'alloy_code',
+            'category',
+            'subcategory',
+            'alloy_description',
+            'primary_footnote_id',
+            'secondary_footnote_id',
+            'country_code',
+            'alloy_elements'
+            ]
+
+        widgets = {
+            'alloy_code': forms.NumberInput(attrs={'class': 'form-control'}),
+            'category': forms.Select(attrs={'class': 'form-control'}),
+            'subcategory': forms.Select(attrs={'class': 'form-control'}),
+            'alloy_description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'cols': '80', 'rows': '5'
+                }),
+            'primary_footnote_id': forms.Select(attrs={
+                'class': 'form-control'
+                }),
+            'secondary_footnote_id': forms.Select(attrs={
+                'class': 'form-control'
+                }),
+            'country_code': forms.Select(attrs={'class': 'form-control'}),
+            'alloy_elements': PrettyJSONWidget(attrs={
+                'class': 'form-control',
+                }),
+        }

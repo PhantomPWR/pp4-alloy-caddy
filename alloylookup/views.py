@@ -12,8 +12,14 @@ from django.contrib.auth import (
     logout,
     get_user_model
     )
-from django.contrib.auth.decorators import login_required
-from .forms import CreateAlloyForm
+from django.contrib.auth.decorators import (
+    login_required,
+    permission_required
+    )
+from .forms import (
+    CreateAlloyForm,
+    UpdateAlloyForm
+    )
 from .models import (
     Country,
     PrimaryFootnote,
@@ -73,6 +79,7 @@ def get_secondary_footnotes_list(request):
         context
         )
 
+
 @login_required(login_url='account_login')
 def get_subcategories_list(request):
     """
@@ -87,6 +94,7 @@ def get_subcategories_list(request):
         'alloylookup/subcategories_list.html',
         context
         )
+
 
 @login_required(login_url='account_login')
 def get_categories_list(request):
@@ -103,6 +111,7 @@ def get_categories_list(request):
         context
         )
 
+
 @login_required(login_url='account_login')
 def get_alloy_list(request):
     """
@@ -117,6 +126,7 @@ def get_alloy_list(request):
         'alloylookup/alloy_list.html',
         context
         )
+
 
 @login_required(login_url='account_login')
 def alloy_search(request):
@@ -137,7 +147,12 @@ def alloy_search(request):
         context
         )
 
+
 @login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.alloy.can_add_alloy',
+    login_url='account_login'
+    )
 def create_alloy(request):
     """
     Form for creating an alloy
@@ -157,3 +172,29 @@ def create_alloy(request):
 
     }
     return render(request, 'alloylookup/create_alloy.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.alloy.can_change_alloy',
+    login_url='account_login'
+    )
+def update_alloy(request):
+    """
+    Form for updating an alloy
+    """
+    update_alloy_form = UpdateAlloyForm()
+    page_title = "Update an Alloy"
+    if request.method == "POST":
+        update_alloy_form = UpdateAlloyForm(request.POST)
+        if update_alloy_form.is_valid():
+            update_alloy_form.save()
+            messages.success(request, "Alloy updated successfully")
+            return redirect('/alloy_search')
+
+    context = {
+        'update_alloy_form': update_alloy_form,
+        'page_title': page_title
+
+    }
+    return render(request, 'alloylookup/update_alloy.html', context)
