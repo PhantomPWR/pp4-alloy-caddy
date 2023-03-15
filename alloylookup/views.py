@@ -213,3 +213,29 @@ def update_alloy(request, pk):
     }
 
     return render(request, 'alloylookup/update_alloy.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.alloy.can_delete_alloy',
+    login_url='account_login'
+    )
+def delete_alloy(request, pk):
+    """
+    Form for deleting an alloy
+    """
+
+    delete_alloy = get_object_or_404(Alloy, id=pk)
+    page_title = "Delete an Alloy"
+
+    if request.method == "POST":
+        delete_alloy.delete()
+        messages.success(request, "Alloy deleted")
+        return redirect('/alloy_search')
+
+    context = {
+        'page_title': page_title,
+        'alloy': delete_alloy
+    }
+
+    return render(request, 'alloylookup/delete_alloy.html', context)

@@ -53,5 +53,9 @@ urlpatterns = [
         views.update_alloy,
         name='update_alloy'
     ),
+    path(
+        'delete-action/<str:pk>/',
+        views.delete_alloy,
+        name='delete_alloy'),
 
 ]

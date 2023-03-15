@@ -1,0 +1,42 @@
+{% extends 'alloylookup/base.html' %}
+
+{% block content %}
+
+<div class="d-flex p-2 justify-content-center">
+    <h1>{{ page_title }}</h1>
+</div>
+<div class="d-flex p-2 justify-content-center">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Are you sure you want to delete this alloy?</h3>
+
+            <table class="table table-striped text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Alloy Code</th>
+                        <th scope="col">Alloy Description</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Sub-Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                            <tr>
+                                <td>{{ alloy.alloy_code }}</td>
+                                <td>{{ alloy.alloy_description }}</td>
+                                <td>{{ alloy.category }}</td>
+                                <td>{{ alloy.subcategory }}</td>
+                            </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center md-3 form-group">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <a class="btn btn-success" href="{% url 'alloy_search' %}?search_term={{alloy.alloy_code}}">Cancel</a>
+        <button class="btn btn-danger" type="submit" name="Delete Alloy">Yes, delete!</button>
+    </form>
+</div>
+
+{% endblock %}
