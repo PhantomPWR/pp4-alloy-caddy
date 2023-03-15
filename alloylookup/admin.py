@@ -29,7 +29,7 @@ class SubCategoryAdmin(admin.ModelAdmin):
 
 
 class AlloyAdmin(admin.ModelAdmin):
-    list_display = ('alloy_code', 'alloy_description')
+    list_display = ('id', 'alloy_code', 'alloy_description')
     ordering = ['alloy_code']
     formfield_overrides = {
         models.JSONField: {'widget': JSONEditorWidget},
