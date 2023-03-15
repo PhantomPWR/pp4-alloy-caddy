@@ -11,7 +11,6 @@
         <table class="table table-striped">
             <thead class="table-light">
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Alloy Code</th>
                     <th scope="col">Alloy Description</th>
                     <th scope="col">Category</th>
@@ -24,7 +23,6 @@
                 {% for alloy in alloy_object_list %}
                     {% if alloy %}
                         <tr>
-                            <td>{{ alloy.id }}</td>
                             <td>{{ alloy.alloy_code }}</td>
                             <td>{{ alloy.alloy_description }}</td>
                             <td>{{ alloy.category }}</td>
@@ -115,6 +113,8 @@
                                 <!-- Alloy Management -->
                                 <a title="Update Alloy" class="fa-solid fa-lg fa-pen-to-square p-2 bd-highlight" role="button"
                             aria-label="Update Alloy" href="{% url 'update_alloy' alloy.id %}"></a>
+                                <a title="Delete Action" class="fa-solid fa-lg fa-trash p-2 bd-highlight" role="button"
+                                aria-label="Delete Action" href="{% url 'delete_alloy' alloy.id %}"></a>
                             </td>
                         </tr> 
                     {% endif %}
