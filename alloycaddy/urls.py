@@ -43,7 +43,15 @@ urlpatterns = [
         views.get_subcategories_list,
         name='get_subcategories_list'
     ),
-    path('create_alloy/', views.create_alloy, name='create_alloy'),
-    path('update_alloy/', views.update_alloy, name='update_alloy'),
+    path(
+        'create_alloy/',
+        views.create_alloy,
+        name='create_alloy'
+    ),
+    path(
+        'update_alloy/<str:pk>/',
+        views.update_alloy,
+        name='update_alloy'
+    ),
 
 ]

@@ -51,6 +51,7 @@ class CreateAlloyForm(ModelForm):
                 }),
             'country_code': forms.Select(attrs={'class': 'form-control'}),
             'alloy_elements': PrettyJSONWidget(attrs={
+                'initial': 'parsed',
                 'class': 'form-control',
                 }),
         }
@@ -66,6 +67,7 @@ class UpdateAlloyForm(ModelForm):
         """
         model = Alloy
         fields = [
+            'id',
             'alloy_code',
             'category',
             'subcategory',
@@ -77,6 +79,9 @@ class UpdateAlloyForm(ModelForm):
             ]
 
         widgets = {
+            'id': forms.TextInput(attrs={
+                'readonly': True
+            }),
             'alloy_code': forms.NumberInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
             'subcategory': forms.Select(attrs={'class': 'form-control'}),
@@ -92,6 +97,7 @@ class UpdateAlloyForm(ModelForm):
                 }),
             'country_code': forms.Select(attrs={'class': 'form-control'}),
             'alloy_elements': PrettyJSONWidget(attrs={
+                'initial': 'parsed',
                 'class': 'form-control',
                 }),
         }

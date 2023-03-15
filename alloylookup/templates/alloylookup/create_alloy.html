@@ -1,4 +1,5 @@
 {% extends 'alloylookup/base.html' %}
+{% load prettyjson %}
 
 {% block content %}
 
@@ -11,14 +12,5 @@
         <button class="btn btn-primary" type="submit" name="Add Alloy">Add Alloy</button>
     </form>
 </div>
-
-<script>
-    let json_field = document.getElementById('id_alloy_elements');
-    console.log(json_field);
-    let json_field_content = json_field.textContent;
-    console.log(json_field_content);
-    let sample_content = '{"others":[{"name":"Others","values":[{"each":"0.5","total":"0.15"}]}],"elements":[{"name":"Si","values":[{"max":"12","min":"5","unit":"m"}],"full_name":"Silicon"},{"name":"Cu","values":[{"max":"12","min":"5","unit":"m"}],"full_name":"Copper"}],"compounds":[{"name":"Wc","values":[{"max":"12","min":"5","unit":"m"}],"full_name":"Tungsten Carbide"}],"special_note":"Other; Cu + sum of named elements 99.5 min"}';
-    
-</script>
 
 {% endblock %}

@@ -1,5 +1,10 @@
-from django.http import HttpResponseRedirect
 from django.urls import reverse
+import json
+from django.core import serializers
+from django.http import (
+    HttpResponseRedirect,
+    HttpResponse
+    )
 from django.shortcuts import (
     render,
     redirect,
@@ -179,22 +184,32 @@ def create_alloy(request):
     'alloylookup.alloy.can_change_alloy',
     login_url='account_login'
     )
-def update_alloy(request):
+def update_alloy(request, pk):
     """
     Form for updating an alloy
     """
-    update_alloy_form = UpdateAlloyForm()
+
+    update_alloy = get_object_or_404(Alloy, id=pk)
+    update_alloy_form = UpdateAlloyForm(instance=update_alloy)
+    
     page_title = "Update an Alloy"
+
     if request.method == "POST":
-        update_alloy_form = UpdateAlloyForm(request.POST)
+        update_alloy_form = UpdateAlloyForm(
+            request.POST,
+            instance=update_alloy
+            )
         if update_alloy_form.is_valid():
             update_alloy_form.save()
             messages.success(request, "Alloy updated successfully")
-            return redirect('/alloy_search')
+            return redirect(
+                '/alloy_search/?search_term={}'
+                .format(update_alloy.alloy_code)
+                )
 
     context = {
         'update_alloy_form': update_alloy_form,
         'page_title': page_title
-
     }
+
     return render(request, 'alloylookup/update_alloy.html', context)
