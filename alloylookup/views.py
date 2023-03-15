@@ -169,7 +169,10 @@ def create_alloy(request):
         if create_alloy_form.is_valid():
             create_alloy_form.save()
             messages.success(request, "Alloy added successfully")
-            return redirect('/alloy_search')
+            return redirect(
+                '/alloy_search/?search_term={}'
+                .format(create_alloy.alloy_code)
+                )
 
     context = {
         'create_alloy_form': create_alloy_form,
