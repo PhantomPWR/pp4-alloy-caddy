@@ -101,3 +101,23 @@ class UpdateAlloyForm(ModelForm):
                 'class': 'form-control',
                 }),
         }
+
+
+class CreateCategoryForm(ModelForm):
+    """
+    ModelForm for adding alloy categories
+    """
+    class Meta:
+        """
+        Meta class for CreateCategoryForm
+        """
+        model = Category
+        fields = [
+            'category_id',
+            'category_name',
+            ]
+
+        widgets = {
+            'category_id': forms.NumberInput(attrs={'class': 'form-control'}),
+            'category_name': forms.TextInput(attrs={'class': 'form-control'}),
+        }

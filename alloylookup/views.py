@@ -23,7 +23,8 @@ from django.contrib.auth.decorators import (
     )
 from .forms import (
     CreateAlloyForm,
-    UpdateAlloyForm
+    UpdateAlloyForm,
+    CreateCategoryForm
     )
 from .models import (
     Country,
@@ -242,3 +243,29 @@ def delete_alloy(request, pk):
     }
 
     return render(request, 'alloylookup/delete_alloy.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.category.can_add_category',
+    login_url='account_login'
+    )
+def create_category(request):
+    """
+    Form for creating an alloy category
+    """
+    create_category_form = CreateCategoryForm()
+    page_title = "Add a Category"
+    if request.method == "POST":
+        create_category_form = CreateCategoryForm(request.POST)
+        if create_category_form.is_valid():
+            create_category_form.save()
+            messages.success(request, "Category added successfully")
+            return redirect('/categories')
+
+    context = {
+        'create_category_form': create_category_form,
+        'page_title': page_title
+
+    }
+    return render(request, 'alloylookup/create_category.html', context)
