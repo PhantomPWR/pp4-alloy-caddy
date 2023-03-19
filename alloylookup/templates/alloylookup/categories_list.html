@@ -1,17 +1,24 @@
 {% extends 'alloylookup/base.html' %}
 
 {% block content %} 
-<body>
-    
-    {% for category in categories %}
 
-    <div>
-        <h5>{{ category.category_id }}</h5>
-        <h6>{{ category.category_name }}</h6>
-        <h6>{{ category.subcategory }}</h6>
-    </div>
+<table class="table table-striped">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Category Id</th>
+            <th scope="col">Category Name</th>
+            <!-- <th scope="col">Subcategory</th> -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.category_id }}</td>
+                <td>{{ category.category_name }}</td>
+                <!-- <td>{{ category.subcategory }}</td> -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-    {% endfor %}
-
-</body>
 {% endblock %}

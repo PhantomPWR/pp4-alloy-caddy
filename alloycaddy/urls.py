@@ -57,5 +57,10 @@ urlpatterns = [
         'delete-action/<str:pk>/',
         views.delete_alloy,
         name='delete_alloy'),
+    path(
+        'create_category/',
+        views.create_category,
+        name='create_category'
+    ),
 
 ]
