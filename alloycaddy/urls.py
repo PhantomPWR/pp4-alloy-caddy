@@ -54,13 +54,18 @@ urlpatterns = [
         name='update_alloy'
     ),
     path(
-        'delete-action/<str:pk>/',
+        'delete-alloy/<str:pk>/',
         views.delete_alloy,
         name='delete_alloy'),
     path(
         'create_category/',
         views.create_category,
         name='create_category'
+    ),
+    path(
+        'update_category/<str:pk>/',
+        views.update_category,
+        name='update_category'
     ),
 
 ]

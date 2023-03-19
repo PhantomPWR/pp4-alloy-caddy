@@ -24,7 +24,8 @@ from django.contrib.auth.decorators import (
 from .forms import (
     CreateAlloyForm,
     UpdateAlloyForm,
-    CreateCategoryForm
+    CreateCategoryForm,
+    UpdateCategoryForm
     )
 from .models import (
     Country,
@@ -91,7 +92,7 @@ def get_subcategories_list(request):
     """
     Retrieves the subcategories_list template.
     """
-    subcategories = Subcategory.objects.all()
+    subcategories = Subcategory.objects.all().order_by('id')
     context = {
         "subcategories": subcategories
     }
@@ -107,7 +108,7 @@ def get_categories_list(request):
     """
     Retrieves the categories_list template.
     """
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('id')
     context = {
         "categories": categories
     }
@@ -170,10 +171,11 @@ def create_alloy(request):
         if create_alloy_form.is_valid():
             create_alloy_form.save()
             messages.success(request, "Alloy added successfully")
-            return redirect(
-                '/alloy_search/?search_term={}'
-                .format(create_alloy.alloy_code)
-                )
+            # return redirect(
+            #     '/alloy_search/?search_term={}'
+            #     .format(create_alloy_form.alloy_code)
+            #     )
+            return redirect('/alloy_search')
 
     context = {
         'create_alloy_form': create_alloy_form,
@@ -269,3 +271,36 @@ def create_category(request):
 
     }
     return render(request, 'alloylookup/create_category.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.category.can_change_category',
+    login_url='account_login'
+    )
+def update_category(request, pk):
+    """
+    Form for updating an alloy category
+    """
+
+    update_category = get_object_or_404(Category, id=pk)
+    update_category_form = UpdateCategoryForm(instance=update_category)
+    
+    page_title = "Update a Category"
+
+    if request.method == "POST":
+        update_category_form = UpdateCategoryForm(
+            request.POST,
+            instance=update_category
+            )
+        if update_category_form.is_valid():
+            update_category_form.save()
+            messages.success(request, "Category updated successfully")
+            return redirect('/categories')
+
+    context = {
+        'update_category_form': update_category_form,
+        'page_title': page_title
+    }
+
+    return render(request, 'alloylookup/update_category.html', context)

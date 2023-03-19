@@ -118,6 +118,30 @@ class CreateCategoryForm(ModelForm):
             ]
 
         widgets = {
+            # 'category_id': forms.NumberInput(attrs={'class': 'form-control'}),
+            'category_id': forms.TextInput(attrs={
+                'readonly': True,
+                'class': 'form-control'
+                }),
+            'category_name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
+class UpdateCategoryForm(ModelForm):
+    """
+    ModelForm for updating alloy categories
+    """
+    class Meta:
+        """
+        Meta class for UpdateCategoryForm
+        """
+        model = Category
+        fields = [
+            'category_id',
+            'category_name',
+            ]
+
+        widgets = {
             'category_id': forms.NumberInput(attrs={'class': 'form-control'}),
             'category_name': forms.TextInput(attrs={'class': 'form-control'}),
         }
