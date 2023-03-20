@@ -82,9 +82,15 @@ class UpdateAlloyForm(ModelForm):
             'id': forms.TextInput(attrs={
                 'readonly': True
             }),
-            'alloy_code': forms.NumberInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(attrs={'class': 'form-control'}),
-            'subcategory': forms.Select(attrs={'class': 'form-control'}),
+            'alloy_code': forms.NumberInput(attrs={
+                'class': 'form-control'
+                }),
+            'category': forms.Select(attrs={
+                'class': 'form-control'
+                }),
+            'subcategory': forms.Select(attrs={
+                'class': 'form-control'
+                }),
             'alloy_description': forms.Textarea(attrs={
                 'class': 'form-control',
                 'cols': '80', 'rows': '5'
@@ -122,7 +128,9 @@ class CreateCategoryForm(ModelForm):
             'category_id': forms.TextInput(attrs={
                 'class': 'form-control'
                 }),
-            'category_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'category_name': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
         }
 
 
@@ -141,6 +149,38 @@ class UpdateCategoryForm(ModelForm):
             ]
 
         widgets = {
-            'category_id': forms.NumberInput(attrs={'class': 'form-control'}),
-            'category_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'category_id': forms.NumberInput(attrs={
+                'class': 'form-control'
+                }),
+            'category_name': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+        }
+
+
+class CreateSubCategoryForm(ModelForm):
+    """
+    ModelForm for adding alloy subcategories
+    """
+    class Meta:
+        """
+        Meta class for CreateSubCategoryForm
+        """
+        model = Subcategory
+        fields = [
+            'category',
+            'subcategory_id',
+            'subcategory_name',
+            ]
+
+        widgets = {
+            'category': forms.Select(attrs={
+                'class': 'form-control'
+                }),
+            'subcategory_id': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+            'subcategory_name': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
         }
