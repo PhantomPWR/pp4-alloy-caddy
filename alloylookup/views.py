@@ -484,3 +484,29 @@ def update_country(request, pk):
     }
 
     return render(request, 'alloylookup/update_country.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.country.can_delete_country',
+    login_url='account_login'
+    )
+def delete_country(request, pk):
+    """
+    Form for deleting a country
+    """
+
+    delete_country = get_object_or_404(Country, id=pk)
+    page_title = "Delete a Country"
+
+    if request.method == "POST":
+        delete_country.delete()
+        messages.success(request, "Country deleted")
+        return redirect('/countries')
+
+    context = {
+        'page_title': page_title,
+        'delete_country': delete_country
+    }
+
+    return render(request, 'alloylookup/delete_country.html', context)
