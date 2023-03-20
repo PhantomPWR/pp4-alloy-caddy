@@ -76,5 +76,10 @@ urlpatterns = [
         views.create_subcategory,
         name='create_subcategory'
     ),
+    path(
+        'update_subcategory/<str:pk>/',
+        views.update_subcategory,
+        name='update_subcategory'
+    ),
 
 ]
