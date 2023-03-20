@@ -17,7 +17,8 @@ class Country(models.Model):
 
     country_id = models.IntegerField(
         null=False,
-        blank=False
+        blank=False,
+        unique=True
     )
     country_name = models.CharField(
         max_length=150,
@@ -103,7 +104,6 @@ class Subcategory(models.Model):
         blank=True,
         related_query_name='category'
     )
-    # category = models.ManyToManyField(Category)
     subcategory_id = models.IntegerField(
         null=False,
         blank=False

@@ -30,7 +30,7 @@
                 <td>
                     {{ country.country_name }}
                     <!-- Counntry Management -->
-                    <a title="Update Country" class="p-2 bd-highlight" role="button" aria-label="Update Country" href="#">
+                    <a title="Update Country" class="p-2 bd-highlight" role="button" aria-label="Update Country" href="{% url 'update_country' country.id %}">
                         <i class="fa-solid fa-lg fa-pen-to-square"></i>
                     </a>
                     <a title="Delete Counntry" class="p-2 bd-highlight" role="button" aria-label="Delete Country" href="#">

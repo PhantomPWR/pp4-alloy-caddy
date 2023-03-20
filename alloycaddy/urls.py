@@ -90,5 +90,10 @@ urlpatterns = [
         views.create_country,
         name='create_country'
     ),
+    path(
+        'update_country/<str:pk>/',
+        views.update_country,
+        name='update_country'
+    ),
 
 ]

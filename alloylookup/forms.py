@@ -236,3 +236,28 @@ class CreateCountryForm(ModelForm):
                 'class': 'form-control'
                 }),
         }
+
+
+class UpdateCountryForm(ModelForm):
+    """
+    ModelForm for updating countries
+    """
+    class Meta:
+        """
+        Meta class for UpdateCountryForm
+        """
+        model = Country
+        fields = [
+            'country_id',
+            'country_name',
+            ]
+
+        widgets = {
+            'country_id': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+            'country_name': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+        }
+
