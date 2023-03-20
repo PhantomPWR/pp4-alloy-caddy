@@ -184,3 +184,31 @@ class CreateSubCategoryForm(ModelForm):
                 'class': 'form-control'
                 }),
         }
+
+
+class UpdateSubCategoryForm(ModelForm):
+    """
+    ModelForm for updating alloy subcategories
+    """
+    class Meta:
+        """
+        Meta class for UpdateSubCategoryForm
+        """
+        model = Subcategory
+        fields = [
+            'category',
+            'subcategory_id',
+            'subcategory_name',
+            ]
+
+        widgets = {
+            'category': forms.Select(attrs={
+                'class': 'form-control'
+                }),
+            'subcategory_id': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+            'subcategory_name': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+        }

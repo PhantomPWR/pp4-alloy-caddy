@@ -26,7 +26,8 @@ from .forms import (
     UpdateAlloyForm,
     CreateCategoryForm,
     UpdateCategoryForm,
-    CreateSubCategoryForm
+    CreateSubCategoryForm,
+    UpdateSubCategoryForm
     )
 from .models import (
     Country,
@@ -337,7 +338,7 @@ def delete_category(request, pk):
 
 @login_required(login_url='account_login')
 @permission_required(
-    'alloylookup.category.can_add_category',
+    'alloylookup.category.can_add_subcategory',
     login_url='account_login'
     )
 def create_subcategory(request):
@@ -359,3 +360,38 @@ def create_subcategory(request):
 
     }
     return render(request, 'alloylookup/create_subcategory.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.category.can_change_subcategory',
+    login_url='account_login'
+    )
+def update_subcategory(request, pk):
+    """
+    Form for updating an alloy subcategory
+    """
+
+    update_subcategory = get_object_or_404(Subcategory, id=pk)
+    update_subcategory_form = UpdateSubCategoryForm(
+        instance=update_subcategory
+        )
+    
+    page_title = "Update a Subcategory"
+
+    if request.method == "POST":
+        update_subcategory_form = UpdateSubCategoryForm(
+            request.POST,
+            instance=update_subcategory
+            )
+        if update_subcategory_form.is_valid():
+            update_subcategory_form.save()
+            messages.success(request, "Subcategory updated successfully")
+            return redirect('/subcategories')
+
+    context = {
+        'update_subcategory_form': update_subcategory_form,
+        'page_title': page_title
+    }
+
+    return render(request, 'alloylookup/update_subcategory.html', context)
