@@ -5,3 +5,9 @@ body {
 .jsonwidget p {
     display: none;
 }
+
+.button-link.btn-primary a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}

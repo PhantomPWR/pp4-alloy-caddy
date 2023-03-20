@@ -108,9 +108,11 @@ def get_categories_list(request):
     """
     Retrieves the categories_list template.
     """
+    page_title = "Alloy Categories"
     categories = Category.objects.all().order_by('id')
     context = {
-        "categories": categories
+        "categories": categories,
+        "page_title": page_title
     }
     return render(
         request,
@@ -304,3 +306,29 @@ def update_category(request, pk):
     }
 
     return render(request, 'alloylookup/update_category.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.alloy.can_delete_alloy',
+    login_url='account_login'
+    )
+def delete_category(request, pk):
+    """
+    Form for deleting an alloy category
+    """
+
+    delete_category = get_object_or_404(Category, id=pk)
+    page_title = "Delete a Category"
+
+    if request.method == "POST":
+        delete_category.delete()
+        messages.success(request, "Category deleted")
+        return redirect('/categories')
+
+    context = {
+        'page_title': page_title,
+        'delete_category': delete_category
+    }
+
+    return render(request, 'alloylookup/delete_category.html', context)

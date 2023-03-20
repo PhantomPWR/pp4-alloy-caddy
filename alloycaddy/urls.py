@@ -67,5 +67,9 @@ urlpatterns = [
         views.update_category,
         name='update_category'
     ),
+    path(
+        'delete-category/<str:pk>/',
+        views.delete_category,
+        name='delete_category'),
 
 ]

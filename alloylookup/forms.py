@@ -120,7 +120,6 @@ class CreateCategoryForm(ModelForm):
         widgets = {
             # 'category_id': forms.NumberInput(attrs={'class': 'form-control'}),
             'category_id': forms.TextInput(attrs={
-                'readonly': True,
                 'class': 'form-control'
                 }),
             'category_name': forms.TextInput(attrs={'class': 'form-control'}),
