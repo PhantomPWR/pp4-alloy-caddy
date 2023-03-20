@@ -81,5 +81,9 @@ urlpatterns = [
         views.update_subcategory,
         name='update_subcategory'
     ),
+    path(
+        'delete-subcategory/<str:pk>/',
+        views.delete_subcategory,
+        name='delete_subcategory'),
 
 ]
