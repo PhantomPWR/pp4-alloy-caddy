@@ -312,7 +312,7 @@ def update_category(request, pk):
 
 @login_required(login_url='account_login')
 @permission_required(
-    'alloylookup.alloy.can_delete_alloy',
+    'alloylookup.category.can_delete_category',
     login_url='account_login'
     )
 def delete_category(request, pk):
@@ -395,3 +395,29 @@ def update_subcategory(request, pk):
     }
 
     return render(request, 'alloylookup/update_subcategory.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.category.can_delete_subcategory',
+    login_url='account_login'
+    )
+def delete_subcategory(request, pk):
+    """
+    Form for deleting an alloy subcategory
+    """
+
+    delete_subcategory = get_object_or_404(Subcategory, id=pk)
+    page_title = "Delete a SubCategory"
+
+    if request.method == "POST":
+        delete_subcategory.delete()
+        messages.success(request, "Subcategory deleted")
+        return redirect('/subcategories')
+
+    context = {
+        'page_title': page_title,
+        'delete_subcategory': delete_subcategory
+    }
+
+    return render(request, 'alloylookup/delete_subcategory.html', context)
