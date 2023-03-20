@@ -2,6 +2,20 @@
 
 {% block content %} 
 
+<div class="container">
+    <div class="row">
+        <div class="col d-flex p-2 justify-content-center">
+            <h1>{{ page_title }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-0">
+            <div class="btn btn-primary button-link">
+                <a aria-current="page" href="{% url 'create_category' %}">Add Category</a>
+            </div>
+        </div>
+    </div>
+</div>
 <table class="table table-striped">
     <thead class="table-light">
         <tr>
@@ -20,7 +34,9 @@
                     <a title="Update Category" class="p-2 bd-highlight" role="button" aria-label="Update Category" href="{% url 'update_category' category.id %}">
                         <i class="fa-solid fa-lg fa-pen-to-square"></i>
                     </a>
-                    
+                    <a title="Delete Category" class="p-2 bd-highlight" role="button" aria-label="Delete Category" href="{% url 'delete_category' category.id %}">
+                        <i class="fa-solid fa-lg fa-trash"></i>
+                    </a>
                 </td>
                 <!-- <td>{{ category.subcategory }}</td> -->
             </tr>
