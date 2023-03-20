@@ -27,7 +27,8 @@ from .forms import (
     CreateCategoryForm,
     UpdateCategoryForm,
     CreateSubCategoryForm,
-    UpdateSubCategoryForm
+    UpdateSubCategoryForm,
+    CreateCountryForm
     )
 from .models import (
     Country,
@@ -421,3 +422,29 @@ def delete_subcategory(request, pk):
     }
 
     return render(request, 'alloylookup/delete_subcategory.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.country.can_add_country',
+    login_url='account_login'
+    )
+def create_country(request):
+    """
+    Form for creating a country
+    """
+    create_country_form = CreateCountryForm()
+    page_title = "Add a Country"
+    if request.method == "POST":
+        create_country_form = CreateCountryForm(request.POST)
+        if create_country_form.is_valid():
+            create_country_form.save()
+            messages.success(request, "Country added successfully")
+            return redirect('/countries')
+
+    context = {
+        'create_country_form': create_country_form,
+        'page_title': page_title
+
+    }
+    return render(request, 'alloylookup/create_country.html', context)

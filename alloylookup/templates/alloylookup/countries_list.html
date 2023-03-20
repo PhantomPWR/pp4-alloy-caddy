@@ -1,16 +1,45 @@
 {% extends 'alloylookup/base.html' %}
 
 {% block content %} 
-<body>
-    
-    {% for country in countries %}
 
-    <div>
-        <h5>{{ country.country_id }}</h5>
-        <h6>{{ country.country_name }}</h6>
+<div class="container">
+    <div class="row">
+        <div class="col d-flex p-2 justify-content-center">
+            <h1>{{ page_title }}</h1>
+        </div>
     </div>
+    <div class="row">
+        <div class="col p-0">
+            <div class="btn btn-primary button-link">
+                <a aria-current="page" href="{% url 'create_country' %}">Add Country</a>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Country Id</th>
+            <th scope="col">Country Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for country in countries %}
+            <tr>
+                <td>{{ country.country_id }}</td>
+                <td>
+                    {{ country.country_name }}
+                    <!-- Counntry Management -->
+                    <a title="Update Country" class="p-2 bd-highlight" role="button" aria-label="Update Country" href="#">
+                        <i class="fa-solid fa-lg fa-pen-to-square"></i>
+                    </a>
+                    <a title="Delete Counntry" class="p-2 bd-highlight" role="button" aria-label="Delete Country" href="#">
+                        <i class="fa-solid fa-lg fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-    {% endfor %}
-
-</body>
 {% endblock %}
