@@ -212,3 +212,27 @@ class UpdateSubCategoryForm(ModelForm):
                 'class': 'form-control'
                 }),
         }
+
+
+class CreateCountryForm(ModelForm):
+    """
+    ModelForm for adding countries
+    """
+    class Meta:
+        """
+        Meta class for CreateCountryForm
+        """
+        model = Country
+        fields = [
+            'country_id',
+            'country_name',
+            ]
+
+        widgets = {
+            'country_id': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+            'country_name': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+        }
