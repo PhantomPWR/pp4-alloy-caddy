@@ -33,14 +33,9 @@
                     {{ subcategory.subcategory_name }}
                 </td>
                 <td>
-                    {{ subcategory.category_name }}
+                    {{ subcategory.category.category_name }}
                     <!-- Category Management -->
-                    <a title="Update Category" class="p-2 bd-highlight" role="button" aria-label="Update Category" href="{% url 'update_category' category.id %}">
-                        <i class="fa-solid fa-lg fa-pen-to-square"></i>
-                    </a>
-                    <a title="Delete Category" class="p-2 bd-highlight" role="button" aria-label="Delete Category" href="{% url 'delete_category' category.id %}">
-                        <i class="fa-solid fa-lg fa-trash"></i>
-                    </a>
+
                 </td>
             </tr>
         {% endfor %}
