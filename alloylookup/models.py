@@ -83,12 +83,6 @@ class Category(models.Model):
         null=False,
         blank=False
     )
-    # subcategory = models.ForeignKey(
-    #     Subcategory,
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True
-    # )
 
     def __str__(self):
         return str(self.category_name)

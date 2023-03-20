@@ -19,12 +19,12 @@ class CountryAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('category_id', 'category_name')
-    ordering = ['category_id']
+    list_display = ('id', 'category_id', 'category_name')
+    ordering = ['id']
 
 
 class SubCategoryAdmin(admin.ModelAdmin):
-    list_display = ('subcategory_id', 'subcategory_name')
+    list_display = ('id', 'subcategory_id', 'subcategory_name')
     ordering = ['subcategory_id']
 
 
