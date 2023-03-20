@@ -28,7 +28,8 @@ from .forms import (
     UpdateCategoryForm,
     CreateSubCategoryForm,
     UpdateSubCategoryForm,
-    CreateCountryForm
+    CreateCountryForm,
+    UpdateCountryForm
     )
 from .models import (
     Country,
@@ -448,3 +449,38 @@ def create_country(request):
 
     }
     return render(request, 'alloylookup/create_country.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.country.can_change_country',
+    login_url='account_login'
+    )
+def update_country(request, pk):
+    """
+    Form for updating a country
+    """
+
+    update_country = get_object_or_404(Country, id=pk)
+    update_country_form = UpdateCountryForm(
+        instance=update_country
+        )
+    
+    page_title = "Update a Country"
+
+    if request.method == "POST":
+        update_country_form = UpdateCountryForm(
+            request.POST,
+            instance=update_country
+            )
+        if update_country_form.is_valid():
+            update_country_form.save()
+            messages.success(request, "Country updated successfully")
+            return redirect('/countries')
+
+    context = {
+        'update_country_form': update_country_form,
+        'page_title': page_title
+    }
+
+    return render(request, 'alloylookup/update_country.html', context)
