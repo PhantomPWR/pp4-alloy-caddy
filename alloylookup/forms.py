@@ -9,8 +9,7 @@ from .models import (
     Alloy,
     Category,
     Subcategory,
-    PrimaryFootnote,
-    SecondaryFootnote,
+    Footnote,
     Country
     )
 
@@ -124,7 +123,6 @@ class CreateCategoryForm(ModelForm):
             ]
 
         widgets = {
-            # 'category_id': forms.NumberInput(attrs={'class': 'form-control'}),
             'category_id': forms.TextInput(attrs={
                 'class': 'form-control'
                 }),
@@ -260,4 +258,3 @@ class UpdateCountryForm(ModelForm):
                 'class': 'form-control'
                 }),
         }
-

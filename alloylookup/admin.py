@@ -3,8 +3,7 @@ from django.db import models
 from django_json_widget.widgets import JSONEditorWidget
 from .models import (
     Country,
-    PrimaryFootnote,
-    SecondaryFootnote,
+    Footnote,
     Subcategory,
     Category,
     Alloy
@@ -16,6 +15,11 @@ from .models import (
 class CountryAdmin(admin.ModelAdmin):
     list_display = ('country_id', 'country_name')
     ordering = ['country_id']
+
+
+class FootNoteAdmin(admin.ModelAdmin):
+    list_display = ('footnote_id', 'footnote')
+    ordering = ['footnote_id']
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -37,8 +41,7 @@ class AlloyAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Country, CountryAdmin)
-admin.site.register(PrimaryFootnote)
-admin.site.register(SecondaryFootnote)
+admin.site.register(Footnote, FootNoteAdmin)
 admin.site.register(Subcategory, SubCategoryAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Alloy, AlloyAdmin)
