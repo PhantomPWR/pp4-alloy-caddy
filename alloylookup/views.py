@@ -33,8 +33,7 @@ from .forms import (
     )
 from .models import (
     Country,
-    PrimaryFootnote,
-    SecondaryFootnote,
+    Footnote,
     Subcategory,
     Category,
     Alloy
@@ -60,33 +59,17 @@ def get_countries_list(request):
 
 
 @login_required(login_url='account_login')
-def get_primary_footnotes_list(request):
+def get_footnotes_list(request):
     """
-    Retrieves the primary_footnotes_list template.
+    Retrieves the footnotes_list template.
     """
-    primary_footnotes = PrimaryFootnote.objects.all()
+    footnotes = Footnote.objects.all()
     context = {
-        "primary_footnotes": primary_footnotes
+        "footnotes": footnotes
     }
     return render(
         request,
-        'alloylookup/primary_footnotes_list.html',
-        context
-        )
-
-
-@login_required(login_url='account_login')
-def get_secondary_footnotes_list(request):
-    """
-    Retrieves the secondary_footnotes_list template.
-    """
-    secondary_footnotes = SecondaryFootnote.objects.all()
-    context = {
-        "secondary_footnotes": secondary_footnotes
-    }
-    return render(
-        request,
-        'alloylookup/secondary_footnotes_list.html',
+        'alloylookup/footnotes_list.html',
         context
         )
 
@@ -177,10 +160,10 @@ def create_alloy(request):
         if create_alloy_form.is_valid():
             create_alloy_form.save()
             messages.success(request, "Alloy added successfully")
-            # return redirect(
-            #     '/alloy_search/?search_term={}'
-            #     .format(create_alloy_form.alloy_code)
-            #     )
+            return redirect(
+                '/alloy_search/?search_term={}'
+                .format(create_alloy_form.alloy_code)
+                )
             return redirect('/alloy_search')
 
     context = {

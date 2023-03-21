@@ -16,11 +16,12 @@
         </div>
     </div>
 </div>
-<table class="table table-striped">
+<table class="table table-striped table-responsive">
     <thead class="table-light">
         <tr>
             <th scope="col">Category Id</th>
             <th scope="col">Category Name</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,8 @@
                 <td>{{ category.category_id }}</td>
                 <td>
                     {{ category.category_name }}
+                </td>
+                <td>
                     <!-- Category Management -->
                     <a title="Update Category" class="p-2 bd-highlight" role="button" aria-label="Update Category" href="{% url 'update_category' category.id %}">
                         <i class="fa-solid fa-lg fa-pen-to-square"></i>

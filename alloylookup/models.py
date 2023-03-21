@@ -30,31 +30,14 @@ class Country(models.Model):
         return str(self.country_name)
 
 
-class PrimaryFootnote(models.Model):
+class Footnote(models.Model):
     """
-    Model for Primary Footnotes.
-    """
-    footnote_id = models.IntegerField(
-        null=False,
-        blank=False
-    )
-    footnote = models.CharField(
-        max_length=300,
-        null=False,
-        blank=False
-    )
-
-    def __str__(self):
-        return str(self.footnote)
-
-
-class SecondaryFootnote(models.Model):
-    """
-    Model for Secondary Footnotes.
+    Model for Footnotes.
     """
     footnote_id = models.IntegerField(
         null=False,
-        blank=False
+        blank=False,
+        unique=True
     )
     footnote = models.CharField(
         max_length=300,
@@ -120,7 +103,7 @@ class Subcategory(models.Model):
 
 class AlloyQuerySet(models.QuerySet):
     """
-    Custom query set
+    Custom queryset
     Used to refine alloy searches
     """
     def search(self, query=None):
@@ -162,16 +145,18 @@ class Alloy(models.Model):
         blank=True
     )
     primary_footnote_id = models.ForeignKey(
-        PrimaryFootnote,
+        Footnote,
         on_delete=models.CASCADE,
         null=True,
-        blank=True
+        blank=True,
+        related_name='primary_footnote_id'
     )
     secondary_footnote_id = models.ForeignKey(
-        SecondaryFootnote,
+        Footnote,
         on_delete=models.CASCADE,
         null=True,
-        blank=True
+        blank=True,
+        related_name='secondary_footnote_id'
     )
     alloy_description = models.CharField(
         max_length=300,

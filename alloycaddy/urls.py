@@ -28,15 +28,20 @@ urlpatterns = [
     path('alloy_search/', views.alloy_search, name='alloy_search'),
     path('countries/', views.get_countries_list, name='get_countries_list'),
     path('categories/', views.get_categories_list, name='get_categories_list'),
+    # path(
+    #     'primary_footnotes/',
+    #     views.get_primary_footnotes_list,
+    #     name='get_primary_footnotes_list'
+    # ),
+    # path(
+    #     'secondary_footnotes/',
+    #     views.get_secondary_footnotes_list,
+    #     name='get_secondary_footnotes_list'
+    # ),
     path(
-        'primary_footnotes/',
-        views.get_primary_footnotes_list,
-        name='get_primary_footnotes_list'
-    ),
-    path(
-        'secondary_footnotes/',
-        views.get_secondary_footnotes_list,
-        name='get_secondary_footnotes_list'
+        'footnotes/',
+        views.get_footnotes_list,
+        name='get_footnotes_list'
     ),
     path(
         'subcategories/',
