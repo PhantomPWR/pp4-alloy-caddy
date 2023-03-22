@@ -188,7 +188,7 @@ def update_alloy(request, pk):
 
     update_alloy = get_object_or_404(Alloy, id=pk)
     update_alloy_form = UpdateAlloyForm(instance=update_alloy)
-    
+
     page_title = "Update an Alloy"
 
     if request.method == "POST":
@@ -276,7 +276,7 @@ def update_category(request, pk):
 
     update_category = get_object_or_404(Category, id=pk)
     update_category_form = UpdateCategoryForm(instance=update_category)
-    
+
     page_title = "Update a Category"
 
     if request.method == "POST":
@@ -363,7 +363,7 @@ def update_subcategory(request, pk):
     update_subcategory_form = UpdateSubCategoryForm(
         instance=update_subcategory
         )
-    
+
     page_title = "Update a Subcategory"
 
     if request.method == "POST":
@@ -450,7 +450,7 @@ def update_country(request, pk):
     update_country_form = UpdateCountryForm(
         instance=update_country
         )
-    
+
     page_title = "Update a Country"
 
     if request.method == "POST":
@@ -537,7 +537,7 @@ def update_footnote(request, pk):
     update_footnote_form = UpdateFootNoteForm(
         instance=update_footnote
         )
-    
+
     page_title = "Update a Footnote"
 
     if request.method == "POST":
@@ -556,3 +556,29 @@ def update_footnote(request, pk):
     }
 
     return render(request, 'alloylookup/update_footnote.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.footnote.can_delete_footnote',
+    login_url='account_login'
+    )
+def delete_footnote(request, pk):
+    """
+    Form for deleting a footnote
+    """
+
+    delete_footnote = get_object_or_404(Footnote, id=pk)
+    page_title = "Delete a Footnote"
+
+    if request.method == "POST":
+        delete_footnote.delete()
+        messages.success(request, "Footnote deleted")
+        return redirect('/footnotes')
+
+    context = {
+        'page_title': page_title,
+        'delete_footnote': delete_footnote
+    }
+
+    return render(request, 'alloylookup/delete_footnote.html', context)

@@ -16,11 +16,12 @@
         </div>
     </div>
 </div>
-<table class="table table-striped">
+<table class="table table-striped table-responsive">
     <thead class="table-light">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Footnote</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -29,11 +30,13 @@
                 <td>{{ footnote.footnote_id }}</td>
                 <td>
                     {{ footnote.footnote }}
+                </td>
+                <td>
                     <!-- Country Management -->
                     <a title="Update Footnote" class="p-2 bd-highlight" role="button" aria-label="Update Footnote" href="{% url 'update_footnote' footnote.id %}">
                         <i class="fa-solid fa-lg fa-pen-to-square"></i>
                     </a>
-                    <a title="Delete Footnote" class="p-2 bd-highlight" role="button" aria-label="Delete Footnote" href="#">
+                    <a title="Delete Footnote" class="p-2 bd-highlight" role="button" aria-label="Delete Footnote" href="{% url 'delete_footnote' footnote.id %}">
                         <i class="fa-solid fa-lg fa-trash"></i>
                     </a>
                 </td>

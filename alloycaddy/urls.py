@@ -104,5 +104,10 @@ urlpatterns = [
         views.update_footnote,
         name='update_footnote'
     ),
+    path(
+        'delete_footnote/<str:pk>',
+        views.delete_footnote,
+        name='delete_footnote'
+    ),
 
 ]
