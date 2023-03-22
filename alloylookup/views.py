@@ -29,7 +29,8 @@ from .forms import (
     CreateSubCategoryForm,
     UpdateSubCategoryForm,
     CreateCountryForm,
-    UpdateCountryForm
+    UpdateCountryForm,
+    CreateFootNoteForm
     )
 from .models import (
     Country,
@@ -493,3 +494,29 @@ def delete_country(request, pk):
     }
 
     return render(request, 'alloylookup/delete_country.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.footnote.can_add_footnote',
+    login_url='account_login'
+    )
+def create_footnote(request):
+    """
+    Form for creating a footnote
+    """
+    create_footnote_form = CreateFootNoteForm()
+    page_title = "Add a Footnote"
+    if request.method == "POST":
+        create_footnote_form = CreateFootNoteForm(request.POST)
+        if create_footnote_form.is_valid():
+            create_footnote_form.save()
+            messages.success(request, "Footnote added successfully")
+            return redirect('/footnotes')
+
+    context = {
+        'create_footnote_form': create_footnote_form,
+        'page_title': page_title
+
+    }
+    return render(request, 'alloylookup/create_footnote.html', context)
