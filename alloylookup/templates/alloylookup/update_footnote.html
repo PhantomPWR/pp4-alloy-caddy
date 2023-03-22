@@ -1,0 +1,15 @@
+{% extends 'alloylookup/base.html' %}
+
+{% block content %}
+
+<h1>{{ page_title }}</h1>
+<div class="d-flex justify-content-center md-3 form-group">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ update_footnote_form.as_p }}
+        <br>
+        <button class="btn btn-primary" type="submit" name="Update Footnote">Update Footnote</button>
+    </form>
+</div>
+
+{% endblock %}
