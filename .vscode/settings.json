@@ -24,7 +24,6 @@
    "workbench.colorTheme": "GitHub Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
    "editor.defaultFormatter": "HookyQR.beautify",
-   "hero-heroku.apiKey": "88a24e11-7236-4c30-8294-ea5dd6e6c609",
    "editor.glyphMargin": true,
    "editor.showFoldingControls": "always",
    "sqltools.useNodeRuntime": true,
