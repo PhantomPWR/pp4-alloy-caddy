@@ -282,3 +282,27 @@ class CreateFootNoteForm(ModelForm):
                 'class': 'form-control'
                 }),
         }
+
+
+class UpdateFootNoteForm(ModelForm):
+    """
+    ModelForm for adding countries
+    """
+    class Meta:
+        """
+        Meta class for UpdateFootNoteForm
+        """
+        model = Footnote
+        fields = [
+            'footnote_id',
+            'footnote',
+            ]
+
+        widgets = {
+            'footnote_id': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+            'footnote': forms.TextInput(attrs={
+                'class': 'form-control'
+                }),
+        }

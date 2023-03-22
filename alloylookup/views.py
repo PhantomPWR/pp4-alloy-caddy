@@ -30,7 +30,8 @@ from .forms import (
     UpdateSubCategoryForm,
     CreateCountryForm,
     UpdateCountryForm,
-    CreateFootNoteForm
+    CreateFootNoteForm,
+    UpdateFootNoteForm
     )
 from .models import (
     Country,
@@ -520,3 +521,38 @@ def create_footnote(request):
 
     }
     return render(request, 'alloylookup/create_footnote.html', context)
+
+
+@login_required(login_url='account_login')
+@permission_required(
+    'alloylookup.footnote.can_change_footnote',
+    login_url='account_login'
+    )
+def update_footnote(request, pk):
+    """
+    Form for updating a footnote
+    """
+
+    update_footnote = get_object_or_404(Footnote, id=pk)
+    update_footnote_form = UpdateFootNoteForm(
+        instance=update_footnote
+        )
+    
+    page_title = "Update a Footnote"
+
+    if request.method == "POST":
+        update_footnote_form = UpdateFootNoteForm(
+            request.POST,
+            instance=update_footnote
+            )
+        if update_footnote_form.is_valid():
+            update_footnote_form.save()
+            messages.success(request, "Footnote updated successfully")
+            return redirect('/footnotes')
+
+    context = {
+        'update_footnote_form': update_footnote_form,
+        'page_title': page_title
+    }
+
+    return render(request, 'alloylookup/update_footnote.html', context)
