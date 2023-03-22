@@ -28,16 +28,6 @@ urlpatterns = [
     path('alloy_search/', views.alloy_search, name='alloy_search'),
     path('countries/', views.get_countries_list, name='get_countries_list'),
     path('categories/', views.get_categories_list, name='get_categories_list'),
-    # path(
-    #     'primary_footnotes/',
-    #     views.get_primary_footnotes_list,
-    #     name='get_primary_footnotes_list'
-    # ),
-    # path(
-    #     'secondary_footnotes/',
-    #     views.get_secondary_footnotes_list,
-    #     name='get_secondary_footnotes_list'
-    # ),
     path(
         'footnotes/',
         views.get_footnotes_list,
@@ -104,5 +94,10 @@ urlpatterns = [
         'delete-country/<str:pk>/',
         views.delete_country,
         name='delete_country'),
+    path(
+        'create_footnote/',
+        views.create_footnote,
+        name='create_footnote'
+    ),
 
 ]
