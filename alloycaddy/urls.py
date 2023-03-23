@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', accounts_views.account_login, name='account_login'),
     path('logout/', accounts_views.account_logout, name='account_logout'),
-    path('register/', accounts_views.account_register, name='account_register'),
     path('', accounts_views.account_login, name='account_login'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
     path('alloy_search/', views.alloy_search, name='alloy_search'),
@@ -109,6 +108,11 @@ urlpatterns = [
         'delete_footnote/<str:pk>',
         views.delete_footnote,
         name='delete_footnote'
+    ),
+    path(
+        'register/',
+        accounts_views.account_register,
+        name='account_register'
     ),
 
 ]

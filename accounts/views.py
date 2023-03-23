@@ -65,10 +65,9 @@ def account_register(request):
             # send welcome email using sendgrid
             # send_welcome(email, username, template_id)
 
-            # assign new user to usergroup
+            # assign new user to correct usergroup
             user = form.save(commit=False)
             user.save()
-
             user_group = Group.objects.get(name='User')
             user.groups.add(user_group)
 
@@ -76,7 +75,9 @@ def account_register(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account created for ' + user)
-            return redirect('/login')
+            return redirect('alloy_search')
+        else:
+            form = RegisterUserForm()
     context = {
         'form': form,
         'page_title': page_title
