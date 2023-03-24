@@ -8,7 +8,10 @@ from django.contrib.auth import (
     logout,
     get_user_model
     )
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import (
+    Group,
+    Permission
+    )
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import (
     render,
@@ -71,6 +74,8 @@ def account_register(request):
             user.save()
             user_group = Group.objects.get(name='User')
             user.groups.add(user_group)
+            permission = Permission.objects.get(name='Can view alloy')
+            user.user_permissions.add(permission)
 
             # save new user
             form.save()
