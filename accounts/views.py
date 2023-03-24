@@ -61,7 +61,7 @@ def account_register(request):
         if form.is_valid():
             email = request.POST['email']
             username = request.POST['username']
-            template_id = 'd-ce15072ff2f44f659ab4279b4581e341'
+            template_id = 'd-d47a07539a314a8881f9b1f06be93cc6'
 
             # send welcome email using sendgrid
             send_welcome(email, username, template_id)
