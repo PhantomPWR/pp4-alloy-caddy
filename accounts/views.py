@@ -15,6 +15,7 @@ from django.shortcuts import (
     redirect,
     get_object_or_404
     )
+from .SendDynamic import send_welcome
 from .forms import RegisterUserForm
 
 # Create your views here.
@@ -60,10 +61,10 @@ def account_register(request):
         if form.is_valid():
             email = request.POST['email']
             username = request.POST['username']
-            template_id = 'd-2a6824e5ca614beaa08cd60b2784a0f2'
+            template_id = 'd-ce15072ff2f44f659ab4279b4581e341'
 
             # send welcome email using sendgrid
-            # send_welcome(email, username, template_id)
+            send_welcome(email, username, template_id)
 
             # assign new user to correct usergroup
             user = form.save(commit=False)
