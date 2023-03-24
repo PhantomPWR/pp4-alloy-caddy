@@ -76,7 +76,7 @@ def account_register(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account created for ' + user)
-            return redirect('alloy_search')
+            return redirect('account_login')
         else:
             form = RegisterUserForm()
     context = {
