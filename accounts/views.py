@@ -89,3 +89,32 @@ def account_register(request):
         'page_title': page_title
     }
     return render(request, 'accounts/register.html', context)
+
+
+def reset_password(request):
+    """
+    Handles user password reset
+    """
+    form = ResetPasswordForm()
+    page_title = 'Password Reset'
+    if request.method == "POST":
+        form = ResetPasswordForm(request.POST)
+        if form.is_valid():
+            username = 'Password Reset'
+            email = request.POST['email']
+            template_id = 'd-d47a07539a314a8881f9b1f06be93cc6'
+
+            # send welcome email via sendgrid
+            send_welcome(email, username, template_id)
+
+            # save new user
+            form.save()
+            email = form.cleaned_data.get('email')
+            messages.success(
+                request, 'Password reset instructions sent to ' + email)
+            return redirect('account_login')
+    context = {
+        'form': form,
+        'page_title': page_title
+    }
+    return render(request, 'accounts/register.html', context)
