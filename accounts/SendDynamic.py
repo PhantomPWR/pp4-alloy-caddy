@@ -29,7 +29,8 @@ def send_welcome(email, username, template_id):
 
     message.template_id = TEMPLATE_ID
 
-    # create our sendgrid client object, pass it our key, then send and return our response objects
+    # create our sendgrid client object, pass it our key,
+    # then send and return our response objects
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
