@@ -16,14 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
-from accounts import views as accounts_views
 from alloylookup import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', accounts_views.account_login, name='account_login'),
-    path('logout/', accounts_views.account_logout, name='account_logout'),
-    path('', accounts_views.account_login, name='account_login'),
+    path('login/', views.account_login, name='account_login'),
+    path('logout/', views.account_logout, name='account_logout'),
+    path('', views.account_login, name='account_login'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
     path('alloy_search/', views.alloy_search, name='alloy_search'),
     path('countries/', views.get_countries_list, name='get_countries_list'),
@@ -111,34 +110,34 @@ urlpatterns = [
     ),
     path(
         'register/',
-        accounts_views.account_register,
+        views.account_register,
         name='account_register'
     ),
     path(
         'reset-password/',
         auth_views.PasswordResetView.as_view(
-            template_name='accounts/password_reset.html'
+            template_name='password_reset.html'
         ),
         name='reset_password'
     ),
     path(
         'reset-password-done/',
         auth_views.PasswordResetDoneView.as_view(
-            template_name='accounts/password_reset_sent.html'
+            template_name='password_reset_sent.html'
         ),
         name='password_reset_done'
     ),
     path(
         'reset-password-confirm/<uidb64>/<token>/',
         auth_views.PasswordResetConfirmView.as_view(
-            template_name='accounts/password_reset_confirm.html'
+            template_name='password_reset_confirm.html'
         ),
         name='password_reset_confirm'
     ),
     path(
         'reset-password-complete/',
         auth_views.PasswordResetCompleteView.as_view(
-            template_name='accounts/password_reset_complete.html'
+            template_name='password_reset_complete.html'
         ),
         name='password_reset_complete'
     ),

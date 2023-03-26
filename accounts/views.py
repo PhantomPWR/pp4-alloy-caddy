@@ -2,17 +2,13 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core import mail
 from django.contrib.auth import (
     authenticate,
     login,
     logout,
     get_user_model
     )
-from django.contrib.auth.models import (
-    Group,
-    Permission
-    )
+from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import (
     render,
@@ -75,45 +71,14 @@ def account_register(request):
             user.save()
             user_group = Group.objects.get(name='User')
             user.groups.add(user_group)
-            permission = Permission.objects.get(name='Can view alloy')
-            user.user_permissions.add(permission)
 
             # save new user
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account created for ' + user)
-            return redirect('account_login')
+            return redirect('alloy_search')
         else:
             form = RegisterUserForm()
-    context = {
-        'form': form,
-        'page_title': page_title
-    }
-    return render(request, 'accounts/register.html', context)
-
-
-def reset_password(request):
-    """
-    Handles user password reset
-    """
-    form = ResetPasswordForm()
-    page_title = 'Password Reset'
-    if request.method == "POST":
-        form = ResetPasswordForm(request.POST)
-        if form.is_valid():
-            username = 'Password Reset'
-            email = request.POST['email']
-            template_id = 'd-d47a07539a314a8881f9b1f06be93cc6'
-
-            # send welcome email via sendgrid
-            send_welcome(email, username, template_id)
-
-            # save new user
-            form.save()
-            email = form.cleaned_data.get('email')
-            messages.success(
-                request, 'Password reset instructions sent to ' + email)
-            return redirect('account_login')
     context = {
         'form': form,
         'page_title': page_title

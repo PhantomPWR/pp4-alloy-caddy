@@ -14,6 +14,8 @@ from .models import (
     Country
     )
 
+User = get_user_model()
+
 
 class CreateAlloyForm(ModelForm):
     """
@@ -307,3 +309,15 @@ class UpdateFootNoteForm(ModelForm):
                 'class': 'form-control'
                 }),
         }
+
+
+class RegisterUserForm(UserCreationForm):
+    """
+    ModelForm for User Registration
+    """
+    class Meta:
+        """
+        Meta class for RegisterUserForm
+        """
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']

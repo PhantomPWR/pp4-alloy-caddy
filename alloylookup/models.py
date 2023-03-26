@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.http import HttpResponse
 from jsoneditor.fields.django3_jsonfield import JSONField
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -181,3 +182,10 @@ class Alloy(models.Model):
 
     def __str__(self):
         return str(self.alloy_code)
+
+
+class User(AbstractUser):
+    """
+    Extend base user model to specify email as unique
+    """
+    email = models.EmailField(unique=True)

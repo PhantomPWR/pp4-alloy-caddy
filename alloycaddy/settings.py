@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'django_json_widget',
     'prettyjson',
     'alloylookup',
-    'accounts',
     'whitenoise',
     'sendgrid'
 ]
@@ -170,7 +169,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Redefining the Auth User Model
-AUTH_USER_MODEL = 'accounts.User'
+# AUTH_USER_MODEL = 'alloylookup.User'
 
 # SendGrid API - Email Settings
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
