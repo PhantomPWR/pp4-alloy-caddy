@@ -56,8 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_json_widget',
     'prettyjson',
-    'accounts',
     'alloylookup',
+    'accounts',
     'whitenoise',
     'sendgrid'
 ]
