@@ -116,28 +116,28 @@ urlpatterns = [
     path(
         'reset-password/',
         auth_views.PasswordResetView.as_view(
-            template_name='password_reset.html'
+            template_name='alloylookup/password_reset.html'
         ),
         name='reset_password'
     ),
     path(
         'reset-password-done/',
         auth_views.PasswordResetDoneView.as_view(
-            template_name='password_reset_sent.html'
+            template_name='alloylookup/password_reset_sent.html'
         ),
         name='password_reset_done'
     ),
     path(
         'reset-password-confirm/<uidb64>/<token>/',
         auth_views.PasswordResetConfirmView.as_view(
-            template_name='password_reset_confirm.html'
+            template_name='alloylookup/password_reset_confirm.html'
         ),
         name='password_reset_confirm'
     ),
     path(
         'reset-password-complete/',
         auth_views.PasswordResetCompleteView.as_view(
-            template_name='password_reset_complete.html'
+            template_name='alloylookup/password_reset_complete.html'
         ),
         name='password_reset_complete'
     ),

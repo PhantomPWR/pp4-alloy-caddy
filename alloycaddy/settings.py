@@ -77,7 +77,10 @@ ROOT_URLCONF = 'alloycaddy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        # 'DIRS': [TEMPLATES_DIR],
+        'DIRS': [
+            'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,17 +99,6 @@ WSGI_APPLICATION = 'alloycaddy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-# DATABASES = {
-#      'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-#  }
 
 if development:
     DATABASES = {
@@ -169,7 +161,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Redefining the Auth User Model
-# AUTH_USER_MODEL = 'alloylookup.User'
+AUTH_USER_MODEL = 'alloylookup.User'
 
 # SendGrid API - Email Settings
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')

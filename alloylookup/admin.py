@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.db import models
 from django_json_widget.widgets import JSONEditorWidget
 from .models import (
@@ -6,7 +7,8 @@ from .models import (
     Footnote,
     Subcategory,
     Category,
-    Alloy
+    Alloy,
+    User
     )
 
 # Register your models here.
@@ -45,3 +47,11 @@ admin.site.register(Footnote, FootNoteAdmin)
 admin.site.register(Subcategory, SubCategoryAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Alloy, AlloyAdmin)
+
+
+@admin.register(User)
+class UserAdmin(BaseUserAdmin):
+    """
+    Register User Admin
+    """
+    pass
