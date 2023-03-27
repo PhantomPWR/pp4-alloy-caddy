@@ -1,6 +1,6 @@
 ---
 name: Structure & Layout
-about: This is the default sturcture & layout template.
+about: This is the default structure & layout template.
 title: 'STRUCTURE & LAYOUT: <TITLE>'
 labels: ''
 assignees: ''
