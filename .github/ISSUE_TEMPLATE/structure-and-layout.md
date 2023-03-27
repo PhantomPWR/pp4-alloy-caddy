@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-All tasks related to the structure & layout off all pages & sections.
+All tasks related to the structure & layout of all pages & sections.
