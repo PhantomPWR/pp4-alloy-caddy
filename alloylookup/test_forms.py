@@ -5,6 +5,8 @@ from .forms import (
     UpdateAlloyForm,
     CreateCategoryForm,
     UpdateCategoryForm,
+    CreateSubCategoryForm,
+    UpdateSubCategoryForm,
     RegisterUserForm,
 )
 User = get_user_model()
@@ -352,7 +354,7 @@ class TestUpdateAlloyForm(TestCase):
             form.errors['alloy_elements'][0],
             'This field is required.'
         )
-    
+
     def test_createalloyform_fields_are_explicit_in_form_metaclass(self):
         """
         Tests for Create Alloy Fields Explicit in
@@ -410,6 +412,20 @@ class TestCreateCategoryForm(TestCase):
             'This field is required.'
         )
 
+    def test_createcategoryform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Create Category Fields Explicit in
+        Form Meta Class
+        """
+        form = CreateCategoryForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'category_id',
+                'category_name'
+            ]
+        )
+
 
 class TestUpdateCategoryForm(TestCase):
     """
@@ -444,6 +460,148 @@ class TestUpdateCategoryForm(TestCase):
         self.assertEqual(
             form.errors['category_name'][0],
             'This field is required.'
+        )
+
+    def test_updatecategoryform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Update Category Fields Explicit in
+        Form Meta Class
+        """
+        form = CreateCategoryForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'category_id',
+                'category_name'
+            ]
+        )
+
+
+class TestCreateSubCategoryForm(TestCase):
+    """
+    Tests for the Create Subcategory Form
+    """
+
+    def test_subcategory_category_is_not_required(self):
+        """
+        Test Subcategory Parent Category is NOT Required
+        """
+        form = CreateSubCategoryForm({
+            'category': '',
+            'subcategory_id': '10',
+            'subcategory_name': 'test-subcategory'
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_subcategory_id_is_required(self):
+        """
+        Test Subcategory Id IS Required
+        """
+        form = CreateSubCategoryForm({
+            'category': '',
+            'subcategory_id': '',
+            'subcategory_name': 'test-subcategory'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('subcategory_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['subcategory_id'][0],
+            'This field is required.'
+        )
+
+    def test_subcategory_name_is_required(self):
+        """
+        Test Subcategory Name IS Required
+        """
+        form = CreateSubCategoryForm({
+            'category': 'test-category',
+            'subcategory_id': '1',
+            'subcategory_name': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('subcategory_name', form.errors.keys())
+        self.assertEqual(
+            form.errors['subcategory_name'][0],
+            'This field is required.'
+        )
+
+    def test_updatesubcategoryform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Update Subcategory Fields Explicit in
+        Form Meta Class
+        """
+        form = CreateSubCategoryForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'category',
+                'subcategory_id',
+                'subcategory_name'
+            ]
+        )
+
+
+class TestUpdateSubCategoryForm(TestCase):
+    """
+    Tests for the Update Subcategory Form
+    """
+
+    def test_subcategory_category_is_not_required(self):
+        """
+        Test Subcategory Parent Category is NOT Required
+        """
+        form = UpdateSubCategoryForm({
+            'category': '',
+            'subcategory_id': '10',
+            'subcategory_name': 'test-subcategory'
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_subcategory_id_is_required(self):
+        """
+        Test Subcategory Id IS Required
+        """
+        form = UpdateSubCategoryForm({
+            'category': '',
+            'subcategory_id': '',
+            'subcategory_name': 'test-subcategory'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('subcategory_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['subcategory_id'][0],
+            'This field is required.'
+        )
+
+    def test_subcategory_name_is_required(self):
+        """
+        Test Subcategory Name IS Required
+        """
+        form = UpdateSubCategoryForm({
+            'category': 'test-category',
+            'subcategory_id': '1',
+            'subcategory_name': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('subcategory_name', form.errors.keys())
+        self.assertEqual(
+            form.errors['subcategory_name'][0],
+            'This field is required.'
+        )
+
+    def test_updatesubcategoryform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Update Subcategory Fields Explicit in
+        Form Meta Class
+        """
+        form = UpdateSubCategoryForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'category',
+                'subcategory_id',
+                'subcategory_name'
+            ]
         )
 
 
