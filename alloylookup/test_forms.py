@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from .forms import (
     CreateAlloyForm,
+    UpdateAlloyForm,
     RegisterUserForm,
 )
 User = get_user_model()
@@ -166,6 +167,200 @@ class TestCreateAlloyForm(TestCase):
         self.assertEqual(
             form.Meta.fields,
             [
+                'alloy_code',
+                'category',
+                'subcategory',
+                'alloy_description',
+                'primary_footnote_id',
+                'secondary_footnote_id',
+                'country_code',
+                'alloy_elements'
+            ]
+        )
+
+
+class TestUpdateAlloyForm(TestCase):
+    """
+    Tests for the Update Alloy Form
+    """
+
+    def test_alloy_code_is_required(self):
+        """
+        Test Alloy Id IS Required
+        """
+        form = UpdateAlloyForm({
+            'id': '',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': 'Alloy Description',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+
+    def test_alloy_code_is_required(self):
+        """
+        Test Alloy Code IS Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': 'Alloy Description',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('alloy_code', form.errors.keys())
+        self.assertEqual(
+            form.errors['alloy_code'][0],
+            'This field is required.'
+        )
+
+    def test_category_is_not_required(self):
+        """
+        Test Category is NOT Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': 'Alloy Description',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_subcategory_is_not_required(self):
+        """
+        Test Subcategory is NOT Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': 'Alloy Description',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_alloy_description_is_required(self):
+        """
+        Test Alloy Description IS Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': '',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('alloy_description', form.errors.keys())
+        self.assertEqual(
+            form.errors['alloy_description'][0],
+            'This field is required.'
+        )
+
+    def test_primary_footnote_id_is_not_required(self):
+        """
+        Test Primary Footnote Id is NOT Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': 'Alloy Description',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_secondary_footnote_id_is_not_required(self):
+        """
+        Test Secondary Footnote Id is NOT Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': 'Alloy Description',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_country_code_is_not_required(self):
+        """
+        Test Country Code is NOT Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': 'Alloy Description',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': [{}]
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_alloy_elements_is_required(self):
+        """
+        Test Alloy Elements IS Required
+        """
+        form = UpdateAlloyForm({
+            'id': '1',
+            'alloy_code': '5432',
+            'category': '',
+            'subcategory': '',
+            'alloy_description': '',
+            'primary_footnote_id': '',
+            'secondary_footnote_id': '',
+            'country_code': '',
+            'alloy_elements': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('alloy_elements', form.errors.keys())
+        self.assertEqual(
+            form.errors['alloy_elements'][0],
+            'This field is required.'
+        )
+    
+    def test_createalloyform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Create Alloy Fields Explicit in
+        Form Meta Class
+        """
+        form = UpdateAlloyForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'id',
                 'alloy_code',
                 'category',
                 'subcategory',
