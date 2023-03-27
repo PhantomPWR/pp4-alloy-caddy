@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from .forms import (
     CreateAlloyForm,
     UpdateAlloyForm,
+    CreateCategoryForm,
+    UpdateCategoryForm,
     RegisterUserForm,
 )
 User = get_user_model()
@@ -157,7 +159,7 @@ class TestCreateAlloyForm(TestCase):
             form.errors['alloy_elements'][0],
             'This field is required.'
         )
-    
+
     def test_createalloyform_fields_are_explicit_in_form_metaclass(self):
         """
         Tests for Create Alloy Fields Explicit in
@@ -370,6 +372,78 @@ class TestUpdateAlloyForm(TestCase):
                 'country_code',
                 'alloy_elements'
             ]
+        )
+
+
+class TestCreateCategoryForm(TestCase):
+    """
+    Tests for the Create Category Form
+    """
+
+    def test_category_id_is_required(self):
+        """
+        Test Category Id IS Required
+        """
+        form = CreateCategoryForm({
+            'category_id': '',
+            'category_name': 'test-category'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('category_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['category_id'][0],
+            'This field is required.'
+        )
+
+    def test_category_name_is_required(self):
+        """
+        Test Category Name IS Required
+        """
+        form = CreateCategoryForm({
+            'category_id': '1',
+            'category_name': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('category_name', form.errors.keys())
+        self.assertEqual(
+            form.errors['category_name'][0],
+            'This field is required.'
+        )
+
+
+class TestUpdateCategoryForm(TestCase):
+    """
+    Tests for the Update Category Form
+    """
+
+    def test_category_id_is_required(self):
+        """
+        Test Category Id IS Required
+        """
+        form = CreateCategoryForm({
+            'category_id': '',
+            'category_name': 'test-category'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('category_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['category_id'][0],
+            'This field is required.'
+        )
+
+    def test_category_name_is_required(self):
+        """
+        Test Category Name IS Required
+        """
+        form = CreateCategoryForm({
+            'category_id': '1',
+            'category_name': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('category_name', form.errors.keys())
+        self.assertEqual(
+            form.errors['category_name'][0],
+            'This field is required.'
         )
 
 
