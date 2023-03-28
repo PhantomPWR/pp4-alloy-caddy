@@ -265,7 +265,7 @@ class UpdateCountryForm(ModelForm):
 
 class CreateFootNoteForm(ModelForm):
     """
-    ModelForm for adding countries
+    ModelForm for adding footnotes
     """
     class Meta:
         """
@@ -289,7 +289,7 @@ class CreateFootNoteForm(ModelForm):
 
 class UpdateFootNoteForm(ModelForm):
     """
-    ModelForm for adding countries
+    ModelForm for updating footnotes
     """
     class Meta:
         """

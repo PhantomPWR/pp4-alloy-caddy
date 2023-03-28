@@ -166,13 +166,11 @@ def create_alloy(request):
     if request.method == "POST":
         create_alloy_form = CreateAlloyForm(request.POST)
         if create_alloy_form.is_valid():
-            create_alloy_form.save()
+            created_alloy = create_alloy_form.save()
             messages.success(request, "Alloy added successfully")
             return redirect(
-                '/alloy_search/?search_term={}'
-                .format(create_alloy_form.alloy_code)
+                f'/alloy_search/?search_term={created_alloy.alloy_code}'
                 )
-            return redirect('/alloy_search')
 
     context = {
         'create_alloy_form': create_alloy_form,
