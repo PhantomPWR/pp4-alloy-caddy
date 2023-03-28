@@ -7,6 +7,10 @@ from .forms import (
     UpdateCategoryForm,
     CreateSubCategoryForm,
     UpdateSubCategoryForm,
+    CreateFootNoteForm,
+    UpdateFootNoteForm,
+    CreateCountryForm,
+    UpdateCountryForm,
     RegisterUserForm,
 )
 User = get_user_model()
@@ -601,6 +605,206 @@ class TestUpdateSubCategoryForm(TestCase):
                 'category',
                 'subcategory_id',
                 'subcategory_name'
+            ]
+        )
+
+
+class TestCreateFootNoteForm(TestCase):
+    """
+    Tests for the Create Footnote Form
+    """
+
+    def test_footnote_id_is_required(self):
+        """
+        Test Footnote Id IS Required
+        """
+        form = CreateFootNoteForm({
+            'footnote_id': '',
+            'footnote': 'test-footnote'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('footnote_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['footnote_id'][0],
+            'This field is required.'
+        )
+
+    def test_footnote_is_required(self):
+        """
+        Test Footnote IS Required
+        """
+        form = CreateFootNoteForm({
+            'footnote_id': '1',
+            'footnote': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('footnote', form.errors.keys())
+        self.assertEqual(
+            form.errors['footnote'][0],
+            'This field is required.'
+        )
+
+    def test_createfootnoteform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Create Footnote Fields Explicit in
+        Form Meta Class
+        """
+        form = CreateFootNoteForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'footnote_id',
+                'footnote'
+            ]
+        )
+
+
+class TestUpdateFootNoteForm(TestCase):
+    """
+    Tests for the Update Footnote Form
+    """
+
+    def test_footnote_id_is_required(self):
+        """
+        Test Footnote Id IS Required
+        """
+        form = UpdateFootNoteForm({
+            'footnote_id': '',
+            'footnote': 'test-footnote'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('footnote_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['footnote_id'][0],
+            'This field is required.'
+        )
+
+    def test_footnote_is_required(self):
+        """
+        Test Footnote IS Required
+        """
+        form = UpdateFootNoteForm({
+            'footnote_id': '1',
+            'footnote': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('footnote', form.errors.keys())
+        self.assertEqual(
+            form.errors['footnote'][0],
+            'This field is required.'
+        )
+
+    def test_updatefootnoteform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Update Footnote Fields Explicit in
+        Form Meta Class
+        """
+        form = UpdateFootNoteForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'footnote_id',
+                'footnote'
+            ]
+        )
+
+
+class TestCreateCountryForm(TestCase):
+    """
+    Tests for the Create Country Form
+    """
+
+    def test_country_id_is_required(self):
+        """
+        Test Country Id IS Required
+        """
+        form = CreateCountryForm({
+            'country_id': '',
+            'country_name': 'test-country'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('country_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['country_id'][0],
+            'This field is required.'
+        )
+
+    def test_country_name_is_required(self):
+        """
+        Test Country Name IS Required
+        """
+        form = CreateCountryForm({
+            'country_id': '1',
+            'country_name': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('country_name', form.errors.keys())
+        self.assertEqual(
+            form.errors['country_name'][0],
+            'This field is required.'
+        )
+
+    def test_createcountryform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Create Country Fields Explicit in
+        Form Meta Class
+        """
+        form = CreateCountryForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'country_id',
+                'country_name'
+            ]
+        )
+
+
+class TestUpdateCountryForm(TestCase):
+    """
+    Tests for the Country Footnote Form
+    """
+
+    def test_country_id_is_required(self):
+        """
+        Test Country Id IS Required
+        """
+        form = UpdateCountryForm({
+            'country_id': '',
+            'country_name': 'test-country'
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('country_id', form.errors.keys())
+        self.assertEqual(
+            form.errors['country_id'][0],
+            'This field is required.'
+        )
+
+    def test_country_name_is_required(self):
+        """
+        Test Country Name IS Required
+        """
+        form = UpdateCountryForm({
+            'country_id': '1',
+            'country_name': ''
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('country_name', form.errors.keys())
+        self.assertEqual(
+            form.errors['country_name'][0],
+            'This field is required.'
+        )
+
+    def test_updatecountryform_fields_are_explicit_in_form_metaclass(self):
+        """
+        Tests for Update Country Fields Explicit in
+        Form Meta Class
+        """
+        form = UpdateCountryForm()
+        self.assertEqual(
+            form.Meta.fields,
+            [
+                'country_id',
+                'country_name'
             ]
         )
 
