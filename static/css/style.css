@@ -38,6 +38,25 @@ main > section {
     display: block;
 }
 
+table th {
+    color: #639;
+}
+
+table td {
+    color: #fefefe;
+}
+
+.modal,
+.modal table th,
+.modal table td {
+    color: initial;
+}
+
 td a {
     text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #3d47a5;
+    border-color: #3d47a5;
 }
