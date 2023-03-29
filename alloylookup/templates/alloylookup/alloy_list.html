@@ -16,7 +16,7 @@
                 </div>
             {% endif %}
         </div>
-        <table class="table table-responsive">
+        <table class="table table-responsive table-hover">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Alloy Code</th>
@@ -121,10 +121,10 @@
                             </td>
                             <td>
                                 <!-- Alloy Management -->
-                                <a title="Update Alloy" class="p-2 bd-highlight text-white" role="button" aria-label="Update Alloy" href="{% url 'update_alloy' alloy.id %}">
+                                <a title="Update Alloy" class="p-2 bd-highlight text-white edit" role="button" aria-label="Update Alloy" href="{% url 'update_alloy' alloy.id %}">
                                     <i class="fa fa-pen-to-square"></i>
                                 </a>
-                                <a title="Delete Alloy" class="p-2 bd-highlight text-light" role="button" aria-label="Delete Alloy" href="{% url 'delete_alloy' alloy.id %}">
+                                <a title="Delete Alloy" class="p-2 bd-highlight text-light delete" role="button" aria-label="Delete Alloy" href="{% url 'delete_alloy' alloy.id %}">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>

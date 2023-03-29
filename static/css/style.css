@@ -9,9 +9,17 @@ main {
     background: linear-gradient(45deg, #3572E8 0%, #7936CF 100%);
 }
 
+main > header {
+    background-color: #2D2D34;
+}
+
 main > section {
     background-color: rgba(255,255,255,0.2);
     height: 100vh;
+}
+
+main > footer {
+    color: #fefefe;
 }
 
 .navbar-nav .nav-link {
@@ -43,9 +51,21 @@ main > section {
     border-color: #3d47a5;
 }
 
+.btn-primary:hover {
+    border-color: #3d47a5;
+    color: #3d47a5;
+    background-color: #fff;
+}
+
 .btn-outline-primary:hover {
     background-color: #3d47a5;
     border-color: #3d47a5;
+}
+
+.edit:hover i,
+.delete:hover i {
+    color: #3d47a5;
+    transition: 200ms all ease-in-out;
 }
 
 table th {
