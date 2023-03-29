@@ -24,7 +24,7 @@ urlpatterns = [
     path('logout/', views.account_logout, name='account_logout'),
     path('', views.account_login, name='account_login'),
     path('alloys/', views.get_alloy_list, name='get_alloy_list'),
-    path('alloy_search/', views.alloy_search, name='alloy_search'),
+    path('alloy-search/', views.alloy_search, name='alloy_search'),
     path('countries/', views.get_countries_list, name='get_countries_list'),
     path('categories/', views.get_categories_list, name='get_categories_list'),
     path(
@@ -38,12 +38,12 @@ urlpatterns = [
         name='get_subcategories_list'
     ),
     path(
-        'create_alloy/',
+        'create-alloy/',
         views.create_alloy,
         name='create_alloy'
     ),
     path(
-        'update_alloy/<str:pk>/',
+        'update-alloy/<str:pk>/',
         views.update_alloy,
         name='update_alloy'
     ),
@@ -52,12 +52,12 @@ urlpatterns = [
         views.delete_alloy,
         name='delete_alloy'),
     path(
-        'create_category/',
+        'create-category/',
         views.create_category,
         name='create_category'
     ),
     path(
-        'update_category/<str:pk>/',
+        'update-category/<str:pk>/',
         views.update_category,
         name='update_category'
     ),
@@ -66,12 +66,12 @@ urlpatterns = [
         views.delete_category,
         name='delete_category'),
     path(
-        'create_subcategory/',
+        'create-subcategory/',
         views.create_subcategory,
         name='create_subcategory'
     ),
     path(
-        'update_subcategory/<str:pk>/',
+        'update-subcategory/<str:pk>/',
         views.update_subcategory,
         name='update_subcategory'
     ),
@@ -80,12 +80,12 @@ urlpatterns = [
         views.delete_subcategory,
         name='delete_subcategory'),
     path(
-        'create_country/',
+        'create-country/',
         views.create_country,
         name='create_country'
     ),
     path(
-        'update_country/<str:pk>/',
+        'update-country/<str:pk>/',
         views.update_country,
         name='update_country'
     ),
@@ -94,17 +94,17 @@ urlpatterns = [
         views.delete_country,
         name='delete_country'),
     path(
-        'create_footnote/',
+        'create-footnote/',
         views.create_footnote,
         name='create_footnote'
     ),
     path(
-        'update_footnote/<str:pk>',
+        'update-footnote/<str:pk>',
         views.update_footnote,
         name='update_footnote'
     ),
     path(
-        'delete_footnote/<str:pk>',
+        'delete-footnote/<str:pk>',
         views.delete_footnote,
         name='delete_footnote'
     ),
