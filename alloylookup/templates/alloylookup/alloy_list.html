@@ -122,12 +122,14 @@
                                 </td>
                                 <td>
                                     <!-- Alloy Management -->
+                                    {% if request.user.is_staff %}
                                     <a title="Update Alloy" class="p-2 bd-highlight text-white edit" role="button" aria-label="Update Alloy" href="{% url 'update_alloy' alloy.id %}">
                                         <i class="fa fa-pen-to-square"></i>
                                     </a>
                                     <a title="Delete Alloy" class="p-2 bd-highlight text-light delete" role="button" aria-label="Delete Alloy" href="{% url 'delete_alloy' alloy.id %}">
                                         <i class="fa fa-trash"></i>
                                     </a>
+                                    {% endif %}
                                 </td>
                         </tr>
                     {% endfor %}

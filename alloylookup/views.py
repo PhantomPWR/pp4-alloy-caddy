@@ -55,8 +55,10 @@ def get_countries_list(request):
     """
     Retrieves the countries_list template.
     """
+    page_title = "Alloy Countries"
     countries = Country.objects.all()
     context = {
+        "page_title": page_title,
         "countries": countries
     }
     return render(
@@ -71,7 +73,7 @@ def get_footnotes_list(request):
     """
     Retrieves the footnotes_list template.
     """
-    page_title = "Footnotes"
+    page_title = "Alloy Footnotes"
     footnotes = Footnote.objects.all()
     context = {
         "footnotes": footnotes,

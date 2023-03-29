@@ -9,10 +9,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col p-0">
-            <div class="btn btn-primary button-link">
-                <a aria-current="page" href="{% url 'create_subcategory' %}">Add Subcategory</a>
-            </div>
+        <div class="col d-flex justify-content-end py-2">
+            {% if request.user.is_staff %}
+                <a class="btn btn-sm btn-outline-primary ms-2 btn-light" aria-current="page" href="{% url 'create_subcategory' %}">Add Subcategory</a>
+            {% endif %}
         </div>
     </div>
 </div>
