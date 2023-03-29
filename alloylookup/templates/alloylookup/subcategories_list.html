@@ -16,35 +16,37 @@
         </div>
     </div>
 </div>
-<table class="table table-striped">
-    <thead class="table-light">
-        <tr>
-            <th scope="col">Subcategory Id</th>
-            <th scope="col">Subcategory Name</th>
-            <th scope="col">Related Category</th>
-            <!-- <th scope="col">Subcategory</th> -->
-        </tr>
-    </thead>
-    <tbody>
-        {% for subcategory in subcategories %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="table-light">
             <tr>
-                <td>{{ subcategory.subcategory_id }}</td>
-                <td>
-                    {{ subcategory.subcategory_name }}
-                </td>
-                <td>
-                    {{ subcategory.category.category_name }}
-                    <!-- Category Management -->
-                    <a title="Update Subcategory" class="p-2 bd-highlight" role="button" aria-label="Update Subcategory" href="{% url 'update_subcategory' subcategory.id %}">
-                        <i class="fa-solid fa-lg fa-pen-to-square"></i>
-                    </a>
-                    <a title="Delete Subcategory" class="p-2 bd-highlight" role="button" aria-label="Delete Subcategory" href="{% url 'delete_subcategory' subcategory.id %}">
-                        <i class="fa-solid fa-lg fa-trash"></i>
-                    </a>
-                </td>
+                <th scope="col">Subcategory Id</th>
+                <th scope="col">Subcategory Name</th>
+                <th scope="col">Related Category</th>
+                <!-- <th scope="col">Subcategory</th> -->
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for subcategory in subcategories %}
+                <tr>
+                    <td>{{ subcategory.subcategory_id }}</td>
+                    <td>
+                        {{ subcategory.subcategory_name }}
+                    </td>
+                    <td>
+                        {{ subcategory.category.category_name }}
+                        <!-- Category Management -->
+                        <a title="Update Subcategory" class="p-2 bd-highlight" role="button" aria-label="Update Subcategory" href="{% url 'update_subcategory' subcategory.id %}">
+                            <i class="fa-solid fa-lg fa-pen-to-square"></i>
+                        </a>
+                        <a title="Delete Subcategory" class="p-2 bd-highlight" role="button" aria-label="Delete Subcategory" href="{% url 'delete_subcategory' subcategory.id %}">
+                            <i class="fa-solid fa-lg fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}

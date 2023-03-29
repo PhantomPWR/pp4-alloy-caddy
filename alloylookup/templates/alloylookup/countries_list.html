@@ -16,30 +16,32 @@
         </div>
     </div>
 </div>
-<table class="table table-striped">
-    <thead class="table-light">
-        <tr>
-            <th scope="col">Country Id</th>
-            <th scope="col">Country Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for country in countries %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="table-light">
             <tr>
-                <td>{{ country.country_id }}</td>
-                <td>
-                    {{ country.country_name }}
-                    <!-- Country Management -->
-                    <a title="Update Country" class="p-2 bd-highlight" role="button" aria-label="Update Country" href="{% url 'update_country' country.id %}">
-                        <i class="fa-solid fa-lg fa-pen-to-square"></i>
-                    </a>
-                    <a title="Delete Country" class="p-2 bd-highlight" role="button" aria-label="Delete Country" href="{% url 'delete_country' country.id %}">
-                        <i class="fa-solid fa-lg fa-trash"></i>
-                    </a>
-                </td>
+                <th scope="col">Country Id</th>
+                <th scope="col">Country Name</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+                <tr>
+                    <td>{{ country.country_id }}</td>
+                    <td>
+                        {{ country.country_name }}
+                        <!-- Country Management -->
+                        <a title="Update Country" class="p-2 bd-highlight" role="button" aria-label="Update Country" href="{% url 'update_country' country.id %}">
+                            <i class="fa-solid fa-lg fa-pen-to-square"></i>
+                        </a>
+                        <a title="Delete Country" class="p-2 bd-highlight" role="button" aria-label="Delete Country" href="{% url 'delete_country' country.id %}">
+                            <i class="fa-solid fa-lg fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}

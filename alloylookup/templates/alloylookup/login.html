@@ -4,18 +4,28 @@
 {% block content %}
 <h1>{{ page_title }}</h1>
 <div class="container">
-    <form method="POST">{% csrf_token %}
-        {% for message in messages %}
-        <p>{{message}}</p>
-    {% endfor %}
-        <label for="username">Username</label>
-        <input type="text" name="username" placeholder="username" id="username">
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password" id="password">
-        <button type="submit">Log In</button>
-    </form>
-    <p>Forgot your password? <a href="/reset-password">Reset your password here</a>.</p>
-    <p>Don't have an account yet? <a href="/register">Register here</a>.</p>
+    <div class="d-flex p-2 justify-content-center">
+        <form method="POST">{% csrf_token %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" placeholder="username" id="username" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" placeholder="password" id="password" class="form-control">
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+    </div>
+    <hr>
+    <div class="d-flex flex-column p-2 justify-content-center align-items-center">
+        <p class="text-center">Forgot your password? <br> <a class="text-light" href="/reset-password">Reset your password here</a></p>
+        <p class="text-center">Don't have an account yet? <br> <a class="text-light" href="/register">Register here</a></p>
+    </div>
 </div>
 
 {% endblock %}

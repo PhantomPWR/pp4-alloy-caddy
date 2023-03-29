@@ -1,5 +1,5 @@
 body {
-    background-color: #24242B;
+    background-color: #2D2D34;
     font-family: 'Sora', sans-serif;
     letter-spacing: 0.025rem;
     font-size: 1em;
@@ -9,13 +9,14 @@ main {
     background: linear-gradient(45deg, #3572E8 0%, #7936CF 100%);
 }
 
-main > header {
+main > header,
+main > footer {
     background-color: #2D2D34;
 }
 
 main > section {
     background-color: rgba(255,255,255,0.2);
-    height: 100vh;
+    min-height: 90vh;
 }
 
 main > footer {
@@ -24,12 +25,13 @@ main > footer {
 
 .navbar-nav .nav-link {
     text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 .navbar-brand {
     font-weight: 700;
     text-transform: lowercase;
-    font-size: 2.6rem;
+    font-size: 2.2rem;
 }
 
 .navbar-brand span:last-child {
@@ -72,7 +74,8 @@ table th {
     color: #639;
 }
 
-table td {
+.table-striped>tbody>tr:nth-of-type(odd)>*,
+.table-striped>tbody>tr:nth-of-type(even)>* {
     color: #fefefe;
 }
 
@@ -100,6 +103,11 @@ main > section h1 {
 main > section form label {
     color: #fefefe;
     margin: 0.5rem 0;
+}
+
+
+form {
+    min-width: 50%;
 }
 
 .form-control {
