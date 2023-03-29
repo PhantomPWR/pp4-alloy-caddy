@@ -1,5 +1,31 @@
 body {
-    color: red;
+    background-color: #24242B;
+    font-family: 'Sora', sans-serif;
+    letter-spacing: 0.025rem;
+    font-size: 1em;
+}
+
+main {
+    background: linear-gradient(45deg, #3572E8 0%, #7936CF 100%);
+}
+
+main > section {
+    background-color: rgba(255,255,255,0.2);
+    height: 100vh;
+}
+
+.navbar-nav .nav-link {
+    text-transform: uppercase;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    text-transform: lowercase;
+    font-size: 2rem;
+}
+
+.navbar-brand span:last-child {
+    font-weight: 400;
 }
 
 .jsonwidget p {

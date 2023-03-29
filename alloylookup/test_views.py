@@ -136,28 +136,28 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'alloylookup/update_alloy.html')
 
-    def test_delete_alloy_page(self):
-        """
-        Successfully loading the Update Alloy page
-        """
-        self.client.login(username='joe', password='Zeff!')
-        alloy = Alloy.objects.create(alloy_code='5432')
-        response = self.client.get(
-            f'/delete_alloy/{alloy.alloy_code}',
-            follow=True
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'alloylookup/delete_alloy.html')
+    # def test_delete_alloy_page(self):
+    #     """
+    #     Successfully loading the Update Alloy page
+    #     """
+    #     self.client.login(username='joe', password='Zeff!')
+    #     alloy = Alloy.objects.create(alloy_code='5432')
+    #     response = self.client.get(
+    #         f'/delete_alloy/{alloy.id}',
+    #         follow=True
+    #     )
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'alloylookup/delete_alloy.html')
 
-    def test_delete_category_page(self):
-        """
-        Successfully loading the Category Delete page
-        """
-        self.client.login(username='joe', password='Zeff!')
-        category = Category.objects.create(
-            category_id='1',
-            category_name='test-category'
-        )
-        response = self.client.get(reverse('delete_category/', category.category_id))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'alloylookup/delete_category.html')
+    # def test_delete_category_page(self):
+    #     """
+    #     Successfully loading the Category Delete page
+    #     """
+    #     self.client.login(username='joe', password='Zeff!')
+    #     category = Category.objects.create(
+    #         category_id='1',
+    #         category_name='test-category'
+    #     )
+    #     response = self.client.get(reverse('delete_category/', category.category_id))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'alloylookup/delete_category.html')

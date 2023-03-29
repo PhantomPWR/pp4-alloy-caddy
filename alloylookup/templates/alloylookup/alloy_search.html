@@ -2,11 +2,22 @@
 
 {% block content %} 
     <div class="container">
-        <h1>Alloy Search</h1>
-        <form action="/alloy_search/">
-            <input type="text" name="search_term" id="search_term">
-            <input type="submit" value="Search">
-          </form>
+        <div class="row align-items-center px-0 py-3">
+            <div class="col d-flex justify-content-start">
+                <form action="/alloy_search/">
+                    <input type="text" name="search_term" id="search_term">
+                    <input type="submit" value="Search Alloys" class="btn btn-sm btn-primary">
+                </form>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <a href="/alloys/" class="btn btn-sm btn-primary">View All Alloys</a>
+                {% if request.user.is_staff %}
+                    <a href="/add_alloy/" class="btn btn-sm btn-outline-primary ms-2 btn-light">Add Alloy</a>
+                {% endif %}
+            </div>
+
+        </div>
+        
         
         <table class="table table-striped table-responsive">
             <thead class="table-light">
@@ -30,7 +41,7 @@
                             <td>{{ alloy.subcategory }}</td>
                             <td>{{ alloy.country_code }}</td>                       
                             <td id="elements-{{ alloy.alloy_code }}">
-                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#elementsModal-{{ alloy.id }}">
+                                <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#elementsModal-{{ alloy.id }}">
                                     View Elements
                                 </button>
                                 <!-- Modal for Displaying Alloy Elements -->
@@ -113,10 +124,10 @@
                             </td>
                             <td>
                                 <!-- Alloy Management -->
-                                <a title="Update Alloy" class="p-2 bd-highlight" role="button" aria-label="Update Alloy" href="{% url 'update_alloy' alloy.id %}">
+                                <a title="Update Alloy" class="p-2 bd-highlight text-white" role="button" aria-label="Update Alloy" href="{% url 'update_alloy' alloy.id %}">
                                     <i class="fa-solid fa-lg fa-pen-to-square"></i>
                                 </a>
-                                <a title="Delete Alloy" class="p-2 bd-highlight" role="button" aria-label="Delete Alloy" href="{% url 'delete_alloy' alloy.id %}">
+                                <a title="Delete Alloy" class="p-2 bd-highlight text-light" role="button" aria-label="Delete Alloy" href="{% url 'delete_alloy' alloy.id %}">
                                     <i class="fa-solid fa-lg fa-trash"></i>
                                 </a>
                             </td>
