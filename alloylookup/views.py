@@ -640,8 +640,8 @@ def account_register(request):
             # assign new user to correct usergroup
             user = form.save(commit=False)
             user.save()
-            user_group = Group.objects.get(name='User')
-            user.groups.add(user_group)
+            # user_group = Group.objects.get(name='User')
+            # user.groups.add(user_group)
             permission = Permission.objects.get(name='Can view alloy')
             user.user_permissions.add(permission)
 
