@@ -21,7 +21,7 @@ main > section {
 .navbar-brand {
     font-weight: 700;
     text-transform: lowercase;
-    font-size: 2rem;
+    font-size: 2.6rem;
 }
 
 .navbar-brand span:last-child {
@@ -36,6 +36,16 @@ main > section {
     color: #fff;
     text-decoration: none;
     display: block;
+}
+
+.btn-outline-primary {
+    color: #3d47a5;
+    border-color: #3d47a5;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3d47a5;
+    border-color: #3d47a5;
 }
 
 table th {
