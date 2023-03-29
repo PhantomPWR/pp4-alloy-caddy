@@ -680,7 +680,7 @@ def reset_password(request):
             email = form.cleaned_data.get('email')
             messages.success(
                 request, 'Password reset instructions sent to ' + email)
-            return redirect('/account_login')
+            return redirect('/login')
     context = {
         'form': form,
         'page_title': page_title
