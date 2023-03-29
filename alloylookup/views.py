@@ -71,9 +71,11 @@ def get_footnotes_list(request):
     """
     Retrieves the footnotes_list template.
     """
+    page_title = "Footnotes"
     footnotes = Footnote.objects.all()
     context = {
-        "footnotes": footnotes
+        "footnotes": footnotes,
+        "page_title": page_title
     }
     return render(
         request,
@@ -87,9 +89,11 @@ def get_subcategories_list(request):
     """
     Retrieves the subcategories_list template.
     """
+    page_title = "Subcategories"
     subcategories = Subcategory.objects.all().order_by('id')
     context = {
-        "subcategories": subcategories
+        "subcategories": subcategories,
+        "page_title": page_title
     }
     return render(
         request,
@@ -599,7 +603,7 @@ def account_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse('alloy_search'))
+            return HttpResponseRedirect(reverse('get_alloy_list'))
         else:
             messages.info(request, 'Incorrect username or password')
     context = {
