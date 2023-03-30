@@ -18,6 +18,13 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from alloylookup import views
 
+# custom error handlers
+
+handler400 = 'alloycaddy.views.handler400'
+handler403 = 'alloycaddy.views.handler403'
+handler404 = 'alloycaddy.views.handler404'
+handler500 = 'alloycaddy.views.handler500'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.account_login, name='account_login'),

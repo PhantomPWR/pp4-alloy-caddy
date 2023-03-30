@@ -5,7 +5,7 @@
 
 <h1>{{ page_title }}</h1>
 <div class="d-flex justify-content-center md-3 form-group">
-    <form action="/create_alloy/" method="POST">
+    <form action="/create-alloy/" method="POST">
         {% csrf_token %}
         {{ create_alloy_form }}
         <br>

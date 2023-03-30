@@ -175,7 +175,7 @@ def create_alloy(request):
             created_alloy = create_alloy_form.save()
             messages.success(request, "Alloy added successfully")
             return redirect(
-                f'/alloy_search/?search_term={created_alloy.alloy_code}'
+                f'/alloy-search/?search_term={created_alloy.alloy_code}'
                 )
 
     context = {
@@ -210,7 +210,7 @@ def update_alloy(request, pk):
             update_alloy_form.save()
             messages.success(request, "Alloy updated successfully")
             return redirect(
-                '/alloy_search/?search_term={}'
+                '/alloy-search/?search_term={}'
                 .format(update_alloy.alloy_code)
                 )
 
@@ -238,7 +238,7 @@ def delete_alloy(request, pk):
     if request.method == "POST":
         delete_alloy.delete()
         messages.success(request, "Alloy deleted")
-        return redirect('/alloy_search')
+        return redirect('/alloy-search')
 
     context = {
         'page_title': page_title,
@@ -264,7 +264,7 @@ def create_category(request):
         if create_category_form.is_valid():
             create_category_form.save()
             messages.success(request, "Category added successfully")
-            return redirect('/categories')
+            return redirect('/categories/')
 
     context = {
         'create_category_form': create_category_form,

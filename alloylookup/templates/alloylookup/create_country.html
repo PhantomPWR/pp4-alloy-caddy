@@ -4,7 +4,7 @@
 
 <h1>{{ page_title }}</h1>
 <div class="d-flex justify-content-center md-3 form-group">
-    <form action="/create_country/" method="POST">
+    <form action="/create-country/" method="POST">
         {% csrf_token %}
         {{ create_country_form }}
         <br>

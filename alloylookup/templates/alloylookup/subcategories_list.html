@@ -23,7 +23,7 @@
                 <th scope="col">Subcategory Id</th>
                 <th scope="col">Subcategory Name</th>
                 <th scope="col">Related Category</th>
-                <!-- <th scope="col">Subcategory</th> -->
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -33,14 +33,14 @@
                     <td>
                         {{ subcategory.subcategory_name }}
                     </td>
+                    <td>{{ subcategory.category.category_name }}</td>
                     <td>
-                        {{ subcategory.category.category_name }}
                         <!-- Category Management -->
-                        <a title="Update Subcategory" class="p-2 bd-highlight" role="button" aria-label="Update Subcategory" href="{% url 'update_subcategory' subcategory.id %}">
-                            <i class="fa-solid fa-lg fa-pen-to-square"></i>
+                        <a title="Update Subcategory" class="p-2 bd-highlight text-light" role="button" aria-label="Update Subcategory" href="{% url 'update_subcategory' subcategory.id %}">
+                            <i class="fa fa-pen-to-square"></i>
                         </a>
-                        <a title="Delete Subcategory" class="p-2 bd-highlight" role="button" aria-label="Delete Subcategory" href="{% url 'delete_subcategory' subcategory.id %}">
-                            <i class="fa-solid fa-lg fa-trash"></i>
+                        <a title="Delete Subcategory" class="p-2 bd-highlight text-light" role="button" aria-label="Delete Subcategory" href="{% url 'delete_subcategory' subcategory.id %}">
+                            <i class="fa fa-trash"></i>
                         </a>
                     </td>
                 </tr>

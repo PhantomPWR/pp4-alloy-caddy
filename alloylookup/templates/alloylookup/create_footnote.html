@@ -4,7 +4,7 @@
 
 <h1>{{ page_title }}</h1>
 <div class="d-flex justify-content-center md-3 form-group">
-    <form action="/create_footnote/" method="POST">
+    <form action="/create-footnote/" method="POST">
         {% csrf_token %}
         {{ create_footnote_form }}
         <br>
