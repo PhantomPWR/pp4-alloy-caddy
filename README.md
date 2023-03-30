@@ -9,7 +9,7 @@ AlloyCaddy is a real-world application, as requested by a client of mine.
 The app's purpose is to serve as a metal alloy lookup tool for traders in the metals sector.
 
 
-[![Wireframe Overview](assets/images/alloy-detail-modal.png)]
+![Wireframe Overview](assets/images/alloy-detail-modal.png)
 
 
 ---
@@ -65,14 +65,14 @@ Menu items and record management controls are accessible, based on the logged in
 
 ### Wireframes
 For wireframes I used good old pen and paper. Links to the sketches are below:
-- [Login](assets/images/account-login.png)
-- [Registration](assets/images/account-register.png)
-- [Search Result View](assets/images/alloy-list.png)
-- [Alloy Elements & Notes](assets/images/alloy-detail-modal.png)
+- ![Login](assets/images/account-login.png)
+- ![Registration](assets/images/account-register.png)
+- ![Search Result View](assets/images/alloy-list.png)
+- ![Alloy Elements & Notes](assets/images/alloy-detail-modal.png)
 
 ### Database Schema
 Based on a spreadsheet from the client, I created a database schema using [dbdiagram.io](https://dbdiagram.io) The database schema can be viewed using the link below:
-- [Database Schema](assets/images/alloycaddy-db-schema.png)
+![Database Schema](assets/images/alloycaddy-db-schema.png)
 
 ##### [back to top](#table-of-contents)
 ---
@@ -98,6 +98,7 @@ Based on a spreadsheet from the client, I created a database schema using [dbdia
 
 ### Remaining Features to Implement
 - **Bulk-Import Data** - At the moment, the database is populated with manually entered sample data. As there are thousands of alloys listed in the spreadsheet, the data should be normalised and functionality for importing created.
+- **Display On Mobile** - HTML tables are notorious for being hard to implement on smaller screens - even with Bootstrap's table-responsive class. The next iteration of the app will address this by using a different method of data display - likely react.js.
 
 ##### [back to top](#table-of-contents)
 ---
